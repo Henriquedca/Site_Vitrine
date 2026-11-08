@@ -59,7 +59,7 @@ export default function Accueil() {
             <Words as="h2" className="titre-section" text="Quatre ans de cabinet, et l'envie d'aller plus loin." />
             <p data-reveal>
               Je travaille depuis quatre ans en cabinet d&apos;expertise comptable à Toulouse. Après un BTS Comptabilité
-              et gestion, je suis aujourd&apos;hui mémorialiste et je prépare le DSCG en parallèle de mon poste.
+              et gestion, je prépare aujourd&apos;hui le DSCG en parallèle de mon poste.
             </p>
             <p data-reveal>
               À côté, j&apos;apprends le développement web et je construis mes propres outils. Ce site rassemble mon

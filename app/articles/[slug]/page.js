@@ -97,7 +97,7 @@ export default async function ArticlePage({ params }) {
             <Logo variant="eucalyptus" />
             <div className={s.encartTexte}>
               <strong>{SITE.author}</strong>
-              <span>Quatre ans en cabinet d&apos;expertise comptable à Toulouse, mémorialiste et candidat au DSCG.</span>
+              <span>Quatre ans en cabinet d&apos;expertise comptable à Toulouse et candidat au DSCG.</span>
             </div>
             <Link href="/#parcours" className={s.encartLien}>Voir mon parcours</Link>
           </div>
