@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+<rect width="800" height="500" fill="#edf0eb"/>
+<g stroke="#d6ddd7" stroke-width="2"><line x1="120" y1="120" x2="700" y2="120"/><line x1="120" y1="200" x2="700" y2="200"/><line x1="120" y1="280" x2="700" y2="280"/><line x1="120" y1="360" x2="700" y2="360"/></g>
+<g fill="#3f6b5c"><rect x="160" y="300" width="70" height="120"/><rect x="270" y="250" width="70" height="170"/><rect x="380" y="270" width="70" height="150"/><rect x="490" y="190" width="70" height="230"/></g>
+<rect x="600" y="130" width="70" height="290" fill="#b5654a"/>
+<line x1="120" y1="420" x2="700" y2="420" stroke="#18241f" stroke-width="3"/>
+</svg>

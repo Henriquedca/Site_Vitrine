@@ -1,0 +1,110 @@
+/* ---------- Liste ---------- */
+.listeTete { max-width: 1180px; margin: 0 auto; padding: 96px 24px 56px; display: flex; flex-direction: column; gap: 18px; }
+.listeIntro { margin: 0; max-width: 40em; font-size: 18px; line-height: 1.7; color: var(--encre-2); }
+.listeCorps { background: #fff; border-top: 1px solid var(--traits); }
+.listeInner { max-width: 1180px; margin: 0 auto; padding: 72px 24px 120px; }
+.cartes { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 28px; }
+.vide { margin: 0; font-size: 18px; color: var(--encre-2); }
+
+/* ---------- Article : en-tête ---------- */
+.ariane {
+  max-width: 1180px; margin: 0 auto; padding: 56px 24px 8px;
+  display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px; color: var(--encre-2);
+}
+.ariane a { color: var(--encre-2); }
+.ariane a:hover { color: var(--encre); }
+.tete { max-width: 1180px; margin: 0 auto; padding: 24px 24px 48px; display: flex; flex-direction: column; gap: 20px; }
+.titre {
+  margin: 0; max-width: 18em; font-family: var(--font-titre); font-weight: 600;
+  font-size: clamp(34px, 4.4vw, 52px); line-height: 1.08; letter-spacing: -0.025em; color: var(--eucalyptus-fonce);
+}
+.chapeau { margin: 0; max-width: 36em; font-size: 20px; line-height: 1.55; color: var(--encre-2); }
+.meta {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px;
+  font-size: 14.5px; color: var(--encre-2); padding-top: 18px; border-top: 1px solid var(--traits);
+}
+.auteur { display: flex; align-items: center; gap: 10px; color: var(--encre); font-weight: 600; }
+.avatar {
+  width: 36px; height: 36px; border-radius: 999px; background: var(--sauge); border: 1px solid var(--traits);
+  display: flex; align-items: center; justify-content: center; font-family: var(--font-titre); font-size: 14px; color: var(--eucalyptus-fonce);
+}
+
+/* ---------- Article : corps ---------- */
+.corpsFond { background: #fff; border-top: 1px solid var(--traits); border-bottom: 1px solid var(--traits); }
+.corps {
+  max-width: 1180px; margin: 0 auto; padding: 56px 24px 72px;
+  display: flex; flex-wrap: wrap; align-items: flex-start; gap: 40px 64px;
+}
+.sommaire {
+  flex: 1 1 240px; min-width: 0; max-width: 300px; display: flex; flex-direction: column; gap: 14px;
+  position: sticky; top: 24px;
+}
+.sommaire h2 {
+  margin: 0; padding-bottom: 10px; border-bottom: 1px solid var(--traits);
+  font-family: var(--font-serif); font-style: italic; font-weight: 500; font-size: 20px; color: var(--argile);
+}
+.sommaire ol { margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.45; }
+.sommaire li::marker { color: var(--eucalyptus); font-family: var(--font-titre); }
+.sommaire a { color: var(--encre); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s ease; }
+.sommaire a:hover { border-color: var(--argile); }
+.texte { flex: 3 1 560px; min-width: 0; max-width: 720px; }
+
+.prose { display: flex; flex-direction: column; gap: 22px; font-size: 17.5px; line-height: 1.75; color: #24312b; }
+.prose > * { margin: 0; }
+.prose h2 {
+  margin-top: 18px; font-family: var(--font-titre); font-size: 28px; font-weight: 600; line-height: 1.25;
+  letter-spacing: -0.015em; color: var(--eucalyptus-fonce); scroll-margin-top: 24px;
+}
+.prose h3 { margin-top: 8px; font-family: var(--font-titre); font-size: 21px; font-weight: 600; color: var(--eucalyptus-fonce); scroll-margin-top: 24px; }
+.prose ul, .prose ol { padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+.prose blockquote { padding-left: 20px; border-left: 3px solid var(--argile-claire); color: var(--encre-2); }
+.prose :global(.a-retenir) {
+  background: var(--sauge); border: 1px solid var(--traits); border-left: 3px solid var(--eucalyptus); border-radius: 6px;
+  padding: 22px 24px; display: flex; flex-direction: column; gap: 10px;
+}
+.prose :global(.a-retenir) strong { font-family: var(--font-serif); font-style: italic; font-weight: 500; font-size: 20px; color: var(--argile); }
+.prose :global(.a-retenir) ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.65; }
+.prose :global(.table-wrap) { overflow-x: auto; border: 1px solid var(--traits); border-radius: 6px; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; min-width: 520px; }
+.prose th, .prose td { padding: 12px 16px; border-bottom: 1px solid var(--traits); text-align: left; vertical-align: top; }
+.prose thead th { background: var(--sauge); border-bottom: 2px solid var(--encre); font-weight: 600; }
+.prose tbody tr:last-child td, .prose tbody tr:last-child th { border-bottom: 0; }
+.prose tbody td:first-child { font-weight: 500; }
+.mention { margin: 40px 0 0; padding: 16px 0 0; border-top: 1px solid var(--traits); font-size: 14px; line-height: 1.6; color: var(--encre-2); }
+
+/* ---------- Après l'article ---------- */
+.apres { max-width: 1180px; margin: 0 auto; padding: 64px 24px 104px; display: flex; flex-direction: column; gap: 56px; }
+.encartAuteur {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 20px; padding: 24px;
+  background: #fff; border: 1px solid var(--traits); border-radius: 8px;
+}
+.encartTexte { flex: 1 1 320px; display: flex; flex-direction: column; gap: 4px; }
+.encartTexte strong { font-family: var(--font-titre); font-size: 18px; font-weight: 600; }
+.encartTexte span { font-size: 15px; line-height: 1.55; color: var(--encre-2); }
+.encartLien { color: var(--eucalyptus); font-weight: 600; text-decoration: none; padding: 6px 0; border-bottom: 1px solid var(--argile); }
+.aLire { display: flex; flex-direction: column; gap: 20px; }
+.aLireGrille { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.aLireCarte {
+  display: flex; flex-direction: column; gap: 12px; padding: 24px; background: #fff;
+  border: 1px solid var(--traits); border-radius: 8px; text-decoration: none; color: var(--encre);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.aLireCarte:hover { color: var(--encre); transform: translateY(-4px); box-shadow: 0 24px 40px -28px rgba(24, 36, 31, .55); }
+.aLireCarte h3 { margin: 0; font-family: var(--font-titre); font-size: 20px; font-weight: 500; line-height: 1.3; color: var(--eucalyptus-fonce); }
+.pastille { align-self: flex-start; font-size: 12.5px; font-weight: 600; color: var(--eucalyptus-fonce); background: #e4efe9; padding: 4px 10px; border-radius: 999px; }
+.aLireMeta { font-size: 13.5px; color: var(--encre-2); }
+
+@media (max-width: 860px) {
+  .sommaire { position: static; max-width: none; flex-basis: 100%; }
+}
+@media (max-width: 640px) {
+  .listeTete, .ariane, .tete, .listeInner, .corps, .apres { padding-left: 16px; padding-right: 16px; }
+  .listeTete { padding-top: 64px; }
+  .ariane { padding-top: 40px; }
+  .texte { flex-basis: 100%; }
+  .prose { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aLireCarte { transition: none; }
+  .aLireCarte:hover { transform: none; }
+}

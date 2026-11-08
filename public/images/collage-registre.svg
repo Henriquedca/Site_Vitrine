@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
+<rect width="600" height="600" fill="#edf0eb"/>
+<rect x="70" y="60" width="460" height="500" rx="6" fill="#fbfaf6" stroke="#d6ddd7" stroke-width="2"/>
+<g stroke="#c9d3cc" stroke-width="2">
+<line x1="70" y1="130" x2="530" y2="130"/><line x1="70" y1="180" x2="530" y2="180"/><line x1="70" y1="230" x2="530" y2="230"/><line x1="70" y1="280" x2="530" y2="280"/><line x1="70" y1="330" x2="530" y2="330"/><line x1="70" y1="380" x2="530" y2="380"/><line x1="70" y1="430" x2="530" y2="430"/><line x1="70" y1="480" x2="530" y2="480"/>
+<line x1="370" y1="60" x2="370" y2="560"/><line x1="450" y1="60" x2="450" y2="560"/>
+</g>
+<g fill="#4a5a53" opacity=".55"><rect x="95" y="148" width="180" height="12" rx="6"/><rect x="95" y="198" width="140" height="12" rx="6"/><rect x="95" y="248" width="200" height="12" rx="6"/><rect x="95" y="298" width="120" height="12" rx="6"/><rect x="390" y="148" width="44" height="12" rx="6"/><rect x="470" y="198" width="44" height="12" rx="6"/><rect x="390" y="248" width="44" height="12" rx="6"/></g>
+<rect x="250" y="360" width="340" height="18" rx="9" transform="rotate(-28 420 369)" fill="#23392f"/>
+<rect x="540" y="296" width="40" height="18" rx="4" transform="rotate(-28 420 369)" fill="#b5654a"/>
+</svg>

@@ -1,0 +1,30 @@
+.header { position: relative; z-index: 2; }
+.clair { background: var(--fond); border-bottom: 1px solid var(--traits); }
+.inner {
+  width: 100%; max-width: 1280px; margin: 0 auto; padding: 24px 32px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
+}
+.clair .inner { max-width: 1180px; padding: 18px 24px; }
+.brand {
+  display: flex; align-items: center; gap: 10px; text-decoration: none;
+  font-family: var(--font-titre); font-weight: 700; font-size: 19px;
+}
+.sombre .brand, .sombre .brand:hover { color: #fff; }
+.clair .brand, .clair .brand:hover { color: var(--encre); }
+.nav {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 32px;
+  font-size: 13.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.link {
+  text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent;
+  transition: border-color .2s ease, color .2s ease;
+}
+.sombre .link { color: #d9e2dc; }
+.sombre .link:hover { color: #fff; border-color: var(--argile-claire); }
+.clair .link { color: var(--encre-2); }
+.clair .link:hover, .clair .link[aria-current='page'] { color: var(--encre); border-color: var(--argile); }
+
+@media (max-width: 560px) {
+  .inner, .clair .inner { padding: 18px 16px; }
+  .nav { gap: 6px 20px; font-size: 12.5px; }
+}
