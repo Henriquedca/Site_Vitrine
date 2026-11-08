@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Henrique – accueil v2 (maquette)</title>
+<!-- Couleur de fond du haut de page : chercher #e7e5e2 (2 occurrences) pour la changer. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Inter+Tight:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#111111}a:hover{color:#555555}
+.nav a{color:#111111;text-decoration:none;padding:6px 0;border-bottom:1px solid transparent}
+.nav a:hover{border-color:#111111;color:#111111}
+.lien{color:#111111;text-decoration:none;border-bottom:1px solid #111111;padding:4px 0}
+.lien-clair{color:#ffffff;text-decoration:none;border-bottom:1px solid #ffffff;padding:4px 0}
+.lien-clair:hover{color:#d0d0d0;border-color:#d0d0d0}
+.btn-noir{background:#111111;color:#ffffff}
+.btn-noir:hover{background:#333333;color:#ffffff}
+.carte:hover .carte-img{background:#c2bfba}
+.cellule:hover{background:#ecebe8}
+</style>
+</head>
+<body>
+<div style="width: 100%; min-height: 100%; background: #f4f3f1; color: #111111; font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased">
+
+<div style="background: #111111; color: #ffffff">
+<div style="max-width: 1360px; margin: 0 auto; padding: 9px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase">
+<span>Toulouse · Comptabilité · Gestion</span>
+<span style="display: flex; gap: 14px; color: #d4d4d4"><a href="#" style="color: #ffffff; text-decoration: none">LinkedIn</a><span aria-hidden="true">|</span><a href="#" style="color: #ffffff; text-decoration: none">Contact</a></span>
+</div>
+</div>
+
+<header style="background: #e7e5e2">
+<div style="max-width: 1360px; margin: 0 auto; padding: 22px 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: center; gap: 16px">
+<nav class="nav" aria-label="Navigation principale" style="display: flex; flex-wrap: wrap; gap: 6px 28px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase">
+<a href="#parcours">Parcours</a>
+<a href="#articles">Articles</a>
+<a href="#projets">Projets</a>
+</nav>
+<a href="#" style="justify-self: center; text-decoration: none; color: #111111; font-family: 'Inter Tight', system-ui, sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 0.04em">HENRIQUE</a>
+<div class="nav" style="justify-self: end; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px 28px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase">
+<a href="#bio">À propos</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</header>
+
+<section style="background: #e7e5e2; overflow: hidden">
+<div style="max-width: 1360px; margin: 0 auto; padding: 40px 24px 56px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start">
+<p style="margin: 0; font-size: 12px; font-weight: 500; line-height: 2; letter-spacing: 0.32em; text-transform: uppercase; white-space: pre-line">Comptabilité
+qui se lit
+simplement.</p>
+<span aria-hidden="true" style="width: 44px; height: 1px; background: #111111"></span>
+</div>
+
+<div style="position: relative; height: 560px; display: flex; align-items: center; justify-content: center">
+<span aria-hidden="true" style="font-family: 'Inter Tight', system-ui, sans-serif; font-weight: 600; font-size: clamp(80px, 15.5vw, 236px); line-height: 0.9; letter-spacing: -0.02em; color: #111111; white-space: nowrap">HENRIQUE</span>
+<div style="position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: 300px; height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end">
+<svg role="img" aria-label="Emplacement du portrait détouré d'Henrique" width="300" height="520" viewBox="0 0 300 520" fill="#3b3a38"><circle cx="150" cy="92" r="52"></circle><path d="M150 156c-62 0-104 34-112 96l-18 268h260l-18-268c-8-62-50-96-112-96z"></path></svg>
+<span style="position: absolute; bottom: 24px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #e6e4e0">Portrait détouré</span>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px">
+<a href="#articles" class="btn-noir" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 30px; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none">Lire les articles</a>
+<a href="#parcours" class="lien" style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase">Mon parcours</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start">
+<p style="margin: 0; font-size: 12px; font-weight: 500; line-height: 2; letter-spacing: 0.32em; text-transform: uppercase; white-space: pre-line">Mémorialiste
+candidat au DSCG
+depuis 2022</p>
+<span aria-hidden="true" style="width: 44px; height: 1px; background: #111111"></span>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-label="Sur ce site" style="background: #111111; color: #ffffff">
+<div style="max-width: 1360px; margin: 0 auto; padding: 40px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px 40px">
+<div style="display: flex; gap: 24px; align-items: center">
+<div aria-hidden="true" style="flex: 0 0 120px; height: 150px; background: #5a5855; display: flex; align-items: center; justify-content: center; font-size: 9.5px; letter-spacing: 0.18em; color: #c9c6c1; text-transform: uppercase">Photo</div>
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase">Parcours</h2>
+<p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #c9c9c9">BTS, cabinet, DSCG :<br>trois étapes, un même fil.</p>
+<a href="#parcours" class="lien-clair" style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase">Voir le parcours →</a>
+</div>
+</div>
+<div style="display: flex; gap: 24px; align-items: center">
+<div aria-hidden="true" style="flex: 0 0 120px; height: 150px; background: #5a5855; display: flex; align-items: center; justify-content: center; font-size: 9.5px; letter-spacing: 0.18em; color: #c9c6c1; text-transform: uppercase">Photo</div>
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase">Articles</h2>
+<p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #c9c9c9">Les questions du cabinet,<br>expliquées simplement.</p>
+<a href="#articles" class="lien-clair" style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase">Lire les articles →</a>
+</div>
+</div>
+<div style="display: flex; gap: 24px; align-items: center">
+<div aria-hidden="true" style="flex: 0 0 120px; height: 150px; background: #5a5855; display: flex; align-items: center; justify-content: center; font-size: 9.5px; letter-spacing: 0.18em; color: #c9c6c1; text-transform: uppercase">Photo</div>
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase">Projets</h2>
+<p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #c9c9c9">Des outils pour mieux<br>comprendre les chiffres.</p>
+<a href="#projets" class="lien-clair" style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase">Voir les projets →</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="bio" style="background: #c9c7c3; overflow: hidden">
+<div style="max-width: 1360px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; align-items: stretch; gap: 0 40px">
+<div style="flex: 1 1 420px; min-width: 0; padding: 88px 0; display: flex; flex-direction: column; gap: 22px; align-items: flex-start">
+<span style="font-size: 12px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase">En quelques mots</span>
+<h2 style="margin: 0; font-family: 'Inter Tight', system-ui, sans-serif; font-weight: 700; font-size: clamp(44px, 5.6vw, 76px); line-height: 0.98; letter-spacing: -0.01em; text-transform: uppercase">Quatre ans<br>de cabinet.</h2>
+<p style="margin: 0; max-width: 30em; font-size: 16px; line-height: 1.7; color: #2b2b2b">Je travaille depuis quatre ans en cabinet d'expertise comptable à Toulouse. Après un BTS Comptabilité et gestion, je suis aujourd'hui mémorialiste et je prépare le DSCG en parallèle de mon poste.</p>
+<p style="margin: 0; max-width: 30em; font-size: 16px; line-height: 1.7; color: #2b2b2b">À côté, j'apprends le développement web et je construis mes propres outils.</p>
+<a href="#parcours" class="btn-noir" style="margin-top: 8px; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 30px; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none">Découvrir mon parcours</a>
+</div>
+<div style="flex: 1 1 440px; min-width: 0; min-height: 520px; display: flex; align-items: flex-end; justify-content: center">
+<div role="img" aria-label="Emplacement d'une photo d'Henrique, de trois quarts" style="width: min(100%, 460px); height: 500px; background: #8f8c87; display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; color: #f0eeea; text-transform: uppercase">Photo noir et blanc</div>
+</div>
+</div>
+</section>
+
+<section aria-label="En bref" style="background: #e9e8e5; border-bottom: 1px solid #d6d4d0">
+<div style="max-width: 1360px; margin: 0 auto; padding: 44px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 32px">
+<div style="display: flex; align-items: center; gap: 16px">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="1.5"></rect><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path><path d="M3 12h18"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 3px"><strong style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase">4 ans en cabinet</strong><span style="font-size: 13px; color: #555555">Expertise comptable, Toulouse</span></div>
+</div>
+<div style="display: flex; align-items: center; gap: 16px">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"></path><path d="M6 11v5c2 2 10 2 12 0v-5"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 3px"><strong style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase">DSCG en préparation</strong><span style="font-size: 13px; color: #555555">En parallèle de mon poste</span></div>
+</div>
+<div style="display: flex; align-items: center; gap: 16px">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"></path><path d="M14 3v5h5"></path><path d="M9 13h7"></path><path d="M9 17h5"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 3px"><strong style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase">[n] articles publiés</strong><span style="font-size: 13px; color: #555555">Fiscalité, rémunération, pilotage</span></div>
+</div>
+<div style="display: flex; align-items: center; gap: 16px">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"></path><path d="M3 13l9 5 9-5"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 3px"><strong style="font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase">3 projets d'outils</strong><span style="font-size: 13px; color: #555555">En cours ou à venir</span></div>
+</div>
+</div>
+</section>
+
+<section id="articles" style="background: #f8f7f5">
+<div style="max-width: 1360px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<h2 style="margin: 0; font-family: 'Inter Tight', system-ui, sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 0.01em; text-transform: uppercase">Ce que j'écris</h2>
+<a href="#" class="lien" style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase">Tous les articles</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px">
+<a href="#" class="carte" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: #111111">
+<div class="carte-img" aria-hidden="true" style="aspect-ratio: 4 / 5; background: #cfccc7; display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; color: #6b6964; text-transform: uppercase">Image de l'article</div>
+<span style="font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #555555">Rémunération · [Date]</span>
+<h3 style="margin: 0; font-size: 18px; font-weight: 500; line-height: 1.35">Salaire ou dividendes : comment le dirigeant arbitre sa rémunération</h3>
+</a>
+<a href="#" class="carte" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: #111111">
+<div class="carte-img" aria-hidden="true" style="aspect-ratio: 4 / 5; background: #cfccc7; display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; color: #6b6964; text-transform: uppercase">Image de l'article</div>
+<span style="font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #555555">Fiscalité · [Date]</span>
+<h3 style="margin: 0; font-size: 18px; font-weight: 500; line-height: 1.35">Véhicule : indemnités kilométriques ou voiture de société ?</h3>
+</a>
+<a href="#" class="carte" style="display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: #111111">
+<div class="carte-img" aria-hidden="true" style="aspect-ratio: 4 / 5; background: #cfccc7; display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em; color: #6b6964; text-transform: uppercase">Image de l'article</div>
+<span style="font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #555555">Pilotage · [Date]</span>
+<h3 style="margin: 0; font-size: 18px; font-weight: 500; line-height: 1.35">Lire son bilan en dix minutes : les cinq chiffres à regarder</h3>
+</a>
+</div>
+</div>
+</section>
+
+<section id="parcours" style="background: #f4f3f1; border-top: 1px solid #d6d4d0">
+<div style="max-width: 1360px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 40px 80px">
+<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 18px">
+<span style="font-size: 12px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase">Parcours</span>
+<h2 style="margin: 0; font-family: 'Inter Tight', system-ui, sans-serif; font-weight: 700; font-size: clamp(40px, 4.4vw, 60px); line-height: 0.98; text-transform: uppercase">Trois étapes,<br>un même fil.</h2>
+</div>
+<ol style="flex: 2 1 560px; margin: 0; padding: 0; list-style: none">
+<li style="display: flex; flex-wrap: wrap; gap: 10px 32px; padding: 28px 0; border-top: 1px solid #111111">
+<span style="flex: 0 0 48px; font-size: 13px; font-weight: 600; letter-spacing: 0.1em">01</span>
+<div style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 6px"><strong style="font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase">BTS Comptabilité et gestion</strong><span style="font-size: 13px; color: #555555">[Établissement, année]</span></div>
+<p style="flex: 1 1 260px; margin: 0; font-size: 15px; line-height: 1.65; color: #2b2b2b">Les bases : comptabilité, fiscalité, gestion.</p>
+</li>
+<li style="display: flex; flex-wrap: wrap; gap: 10px 32px; padding: 28px 0; border-top: 1px solid #d6d4d0">
+<span style="flex: 0 0 48px; font-size: 13px; font-weight: 600; letter-spacing: 0.1em">02</span>
+<div style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 6px"><strong style="font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase">Cabinet d'expertise comptable</strong><span style="font-size: 13px; color: #555555">Toulouse · depuis 4 ans</span></div>
+<p style="flex: 1 1 260px; margin: 0; font-size: 15px; line-height: 1.65; color: #2b2b2b">Révision des comptes, fiscalité et échanges avec les dirigeants. Aujourd'hui mémorialiste.</p>
+</li>
+<li style="display: flex; flex-wrap: wrap; gap: 10px 32px; padding: 28px 0; border-top: 1px solid #d6d4d0; border-bottom: 1px solid #d6d4d0">
+<span style="flex: 0 0 48px; font-size: 13px; font-weight: 600; letter-spacing: 0.1em">03</span>
+<div style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 6px"><strong style="font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase">DSCG</strong><span style="font-size: 13px; color: #555555">En cours</span></div>
+<p style="flex: 1 1 260px; margin: 0; font-size: 15px; line-height: 1.65; color: #2b2b2b">Préparé en parallèle de mon poste. Outils du quotidien : Pennylane, Excel, Notion, Next.js et JavaScript.</p>
+</li>
+</ol>
+</div>
+</section>
+
+<section id="projets" style="background: #f8f7f5; border-top: 1px solid #d6d4d0">
+<div style="max-width: 1360px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<h2 style="margin: 0; font-family: 'Inter Tight', system-ui, sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 0.01em; text-transform: uppercase">Les outils que je construis</h2>
+<span style="font-size: 13px; color: #555555">Pour mieux comprendre les chiffres.</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); border-top: 1px solid #111111">
+<div class="cellule" style="padding: 36px 28px 40px 0; display: flex; flex-direction: column; gap: 14px; border-bottom: 1px solid #d6d4d0">
+<span style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase">En cours</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 500">Simulateur de rémunération</h3>
+<p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #555555">Comparer salaire et dividendes, et leur coût réel.</p>
+</div>
+<div class="cellule" style="padding: 36px 28px 40px; display: flex; flex-direction: column; gap: 14px; border-bottom: 1px solid #d6d4d0; border-left: 1px solid #d6d4d0">
+<span style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase">En cours</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 500">Fiches pratiques</h3>
+<p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #555555">Des mémos courts sur les questions qui reviennent souvent.</p>
+</div>
+<div class="cellule" style="padding: 36px 28px 40px; display: flex; flex-direction: column; gap: 14px; border-bottom: 1px solid #d6d4d0; border-left: 1px solid #d6d4d0">
+<span style="font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6b6964">À venir</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 500">Prévisionnel de trésorerie</h3>
+<p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #555555">Anticiper les mois à venir à partir des données comptables.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact" style="background: #111111; color: #ffffff">
+<div style="max-width: 1360px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<span style="font-size: 12px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: #bdbdbd">Contact</span>
+<h2 style="margin: 0; font-family: 'Inter Tight', system-ui, sans-serif; font-weight: 700; font-size: clamp(44px, 6vw, 88px); line-height: 0.95; text-transform: uppercase">Une question,<br>un échange ?</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #bdbdbd">Sur un article, sur le métier ou sur un projet, écrivez-moi.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="#" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 30px; background: #ffffff; color: #111111; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none">M'écrire</a>
+<a href="#" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 30px; border: 1px solid #ffffff; color: #ffffff; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none">LinkedIn</a>
+</div>
+</div>
+</section>
+
+<footer style="background: #111111; color: #a3a3a3; border-top: 1px solid #2c2c2c">
+<div style="max-width: 1360px; margin: 0 auto; padding: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase">
+<span style="font-family: 'Inter Tight', system-ui, sans-serif; font-size: 16px; font-weight: 600; letter-spacing: 0.04em; color: #ffffff">HENRIQUE</span>
+<span>Toulouse · © 2026 · <a href="#" style="color: #ffffff">Confidentialité</a></span>
+</div>
+</footer>
+
+</div>
+</body>
+</html>
