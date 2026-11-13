@@ -78,4 +78,4 @@ Introduction…
 5. **Typographie** : un seul H1 par page, des H2 pour découper la page, du texte courant en Inter 400 (pas de graisse légère ni de police décorative pour les paragraphes).
 6. **Clarté** : dès le haut de page, on sait qui est Henrique, ce qu'il fait et quoi faire ensuite (le contacter, lire, voir les projets).
 7. **Lisibilité en diagonale** : titres courts, paragraphes courts, cartes et listes plutôt que longs blocs.
-8. **Penser au visiteur** (dirigeants, entreprises, recruteurs), pas aux goûts personnels.
+8. **Penser au visiteur**, pas aux goûts personnels. Publics visés : les **dirigeants d'entreprise** (comprendre leurs chiffres) et les **experts-comptables et DAF** (voir ce que vaut Henrique). Le site sert de vitrine de compétences : chaque section doit apporter une preuve (repères chiffrés, savoir-faire, parcours, articles, projets).
