@@ -68,3 +68,14 @@ Introduction…
 - [ ] Compléter la bio et la ligne du BTS (établissement, année).
 - [ ] Rédiger le premier article et retirer `brouillon: true`.
 - [ ] Compléter le nom du responsable dans `app/confidentialite/page.js`.
+
+## Principes de design (à respecter pour toute modification)
+
+1. **Hiérarchie visuelle** : l'élément le plus important de chaque section est le plus grand et le plus gras ; le reste est plus discret.
+2. **Un seul appel à l'action principal par zone**, bien contrasté (bouton plein argile `#e8a88f`, texte encre `#18241f`). **Pas de bouton « fantôme »** (contour sans fond).
+3. **Règle 60-30-10** : 60 % de neutres (blanc, fond `#f5f7f4`, sauge `#edf0eb`), 30 % de vert (`#23392f`, `#3f6b5c`, `#18241f`), 10 % d'argile pour les actions et les accents.
+4. **Contraste** : au moins 4,5:1 pour le texte courant. L'argile `#b5654a` ne passe pas pour un petit texte sur fond clair : utiliser `#9c4f36` (≥ 5:1), ou réserver `#b5654a` aux grands textes et aux décors.
+5. **Typographie** : un seul H1 par page, des H2 pour découper la page, du texte courant en Inter 400 (pas de graisse légère ni de police décorative pour les paragraphes).
+6. **Clarté** : dès le haut de page, on sait qui est Henrique, ce qu'il fait et quoi faire ensuite (le contacter, lire, voir les projets).
+7. **Lisibilité en diagonale** : titres courts, paragraphes courts, cartes et listes plutôt que longs blocs.
+8. **Penser au visiteur** (dirigeants, entreprises, recruteurs), pas aux goûts personnels.
