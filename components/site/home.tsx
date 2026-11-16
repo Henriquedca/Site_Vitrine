@@ -4,6 +4,9 @@ import { BlockSurface } from '@/components/klarhimmel/blocks/surface';
 import HeroSplit from '@/components/klarhimmel/blocks/hero-split';
 import FeaturesGrid from '@/components/klarhimmel/blocks/features-grid';
 import BlogCards from '@/components/klarhimmel/blocks/blog-cards';
+import FeaturesSplit from '@/components/klarhimmel/blocks/features-split';
+import { BIO, POINTS, PORTRAIT } from '@/lib/profil';
+import { SITE } from '@/lib/site';
 import type { Entry } from '@/lib/collections';
 import { entryCard } from './entry-cards';
 import { SiteShell } from './site-shell';
@@ -82,6 +85,16 @@ export function Home({ articles, creations }: { articles: Entry[]; creations: En
           />
         </BlockSurface>
       )}
+      <BlockSurface type="features-split">
+        <FeaturesSplit
+          props={{
+            eyebrow: 'Qui suis-je ?',
+            title: 'Le terrain d’abord, le conseil ensuite',
+            description: '',
+            items: [{ title: SITE.name, description: BIO, points: POINTS, media: PORTRAIT }],
+          }}
+        />
+      </BlockSurface>
     </SiteShell>
   );
 }

@@ -18,6 +18,7 @@ Puis ouvrir http://localhost:3000.
 | Quoi | Où |
 | --- | --- |
 | Nom, sous-titre, e-mail, LinkedIn, pages du menu | `lib/site.ts` |
+| Parcours : bio, formation, expérience, chiffres clés, portrait | `lib/profil.ts` |
 | Couleurs, polices, arrondis du site | `lib/theme.ts` |
 | Enveloppe commune (thème, menu, pied de page) | `components/site/site-shell.tsx` |
 | Contenu de la page d'accueil | `components/site/home.tsx` |
