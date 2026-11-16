@@ -13,3 +13,13 @@ body {
     background: #1a1513;
   }
 }
+
+/* Le contenu occupe toute la largeur de l'écran (Klarhimmel le limite à 72rem par défaut), avec des marges
+   qui grandissent sur les grands écrans. Les pages de lecture (articles) gardent leur colonne étroite. */
+.kh-root {
+  --container-kh-page: 100%;
+  --kh-gutter: clamp(1.25rem, 0.5rem + 4cqi, 5rem);
+}
+.kh-root .max-w-kh-page {
+  max-width: none;
+}

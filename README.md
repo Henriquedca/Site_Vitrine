@@ -21,6 +21,8 @@ Puis ouvrir http://localhost:3000.
 | Parcours : bio, formation, expérience, chiffres clés, portrait | `lib/profil.ts` |
 | Couleurs, polices, arrondis du site | `lib/theme.ts` |
 | Enveloppe commune (thème, menu, pied de page) | `components/site/site-shell.tsx` |
+| Pied de page (avec le bouton LinkedIn) | `components/site/site-footer.tsx` |
+| Largeur du contenu (toute la largeur de l'écran) | `app/globals.css` |
 | Contenu de la page d'accueil | `components/site/home.tsx` |
 | Blocs Klarhimmel installés (ne pas modifier à la main sauf besoin) | `components/klarhimmel/` |
 | Articles (un fichier Markdown par article) | `content/articles/` |
@@ -92,4 +94,6 @@ Chaque installation réécrit ces fichiers communs ; le script (`scripts/add-blo
 - **Pages** : Accueil, Articles, Créations (outils et veille), À propos, Contact.
 - **Accueil**, dans l'ordre : accroche, accompagnement complet (3 métiers), derniers articles, créations, qui suis-je, appel à me contacter.
 - Pas de collecte de données des visiteurs : un simple « Me contacter ».
+- Pas de barre au-dessus du menu ; l'e-mail n'apparaît que sur la page Contact et dans les pages légales ; LinkedIn est dans le pied de page.
+- Le contenu occupe toute la largeur de l'écran (les articles gardent une colonne de lecture étroite).
 - Les outils sont présentés, jamais proposés en téléchargement.

@@ -1,5 +1,6 @@
 /**
- * Informations du site, lues par le menu, le pied de page et la page Contact.
+ * Informations du site, lues par le menu, le pied de page, la page Contact et les pages légales.
+ * L'e-mail n'apparaît que sur la page Contact et dans les pages légales.
  * Modifier ici change partout.
  */
 export const SITE = {
@@ -17,12 +18,6 @@ export const PAGES = [
 ];
 
 export const CONTACT_PAGE = { label: 'Me contacter', href: '/contact' };
-
-/** Liens de contact directs (barre du haut et pied de page). */
-export const CONTACT_LINKS = [
-  { label: SITE.email, href: `mailto:${SITE.email}` },
-  { label: 'LinkedIn', href: SITE.linkedin },
-];
 
 export const LEGAL_LINKS = [
   { label: 'Mentions légales', href: '/mentions-legales' },

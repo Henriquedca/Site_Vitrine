@@ -1,0 +1,34 @@
+.kh-mega-menu > ul { display:grid; grid-template-columns:minmax(0,1fr); gap:.25rem; }
+.kh-mega-menu > ul > li > a { flex-direction:row; align-items:start; gap:.75rem; padding:.625rem; }
+.kh-navbar-simple { --kh-nav-container-width:var(--container-kh-page,72rem); }
+.kh-navbar-simple > .kh-navbar-container { max-width:var(--kh-nav-container-width); }
+.kh-mega-menu .kh-media { width:8rem; aspect-ratio:16 / 10; flex-shrink:0; border-radius:var(--kh-radius,8px); overflow:hidden; }
+.kh-mega-menu .kh-dropdown-text { flex:1; }
+@container (min-width:64rem) {
+  li:has(> .kh-mega-menu) { position:static; }
+  .kh-mega-menu > ul {
+    position:absolute; top:100%; inset-inline:0; width:100%; max-width:none;
+    grid-template-columns:repeat(3,minmax(0,1fr)); column-gap:2rem;
+    /* the links keep their .625rem padding (room for the hover tile); the panel pads that much less, so the text sits on the page grid */
+    padding-block:1rem; padding-inline:calc(max(var(--kh-gutter),calc((100% - var(--kh-nav-container-width)) / 2 + var(--kh-gutter))) - .625rem);
+    margin:0; border:0; border-bottom:1px solid var(--kh-line); border-radius:0; box-shadow:var(--kh-shadow-2);
+  }
+  /* four items: one row of four, with a smaller picture */
+  .kh-mega-menu > ul:has(> li:nth-child(4):last-child) { grid-template-columns:repeat(4,minmax(0,1fr)); column-gap:1.5rem; }
+  .kh-mega-menu > ul:has(> li:nth-child(4):last-child) .kh-media { width:6rem; }
+  /* seven or eight items: two rows of four (three columns would leave one alone) */
+  .kh-mega-menu > ul:has(> li:nth-child(7)) { grid-template-columns:repeat(4,minmax(0,1fr)); column-gap:1.5rem; }
+  .kh-mega-menu > ul:has(> li:nth-child(7)) .kh-media { width:6rem; }
+}
+@container (min-width:48rem) and (max-width:63.999rem) {
+  .kh-mega-menu > ul { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+/* sticky: the block (its .kh-block wrapper) sticks, so the header stays on the page's own scroll; solid canvas with a hairline. */
+.kh-block:has(> .kh-navbar-simple[data-kh-sticky]) { position:sticky; top:0; z-index:50; background:transparent; }
+/* overlay: transparent only while it sits at the top over a hero (data-kh-at-top); never glass, and the open menu is solid. */
+.kh-navbar-simple[data-kh-overlay] { transition:background-color 180ms ease, border-color 180ms ease; }
+.kh-navbar-simple[data-kh-overlay][data-kh-at-top]:not(:has(details[open])) { background:transparent; border-bottom-color:transparent; }
+.kh-block:has(> .kh-navbar-simple[data-kh-overlay]) { background:transparent; }
+@media (prefers-reduced-motion:reduce) { .kh-navbar-simple[data-kh-overlay] { transition:none; } }
+/* the mobile sheet is open: the page behind it does not scroll (navbar-simple sets the class on <html> while it is open) */
+html.kh-menu-open { overflow:hidden; }
