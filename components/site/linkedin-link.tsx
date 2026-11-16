@@ -5,7 +5,7 @@ import { cn } from '@/components/klarhimmel/lib/utils';
 import { SITE } from '@/lib/site';
 import { LinkedInIcon } from './icons';
 
-/** Icône LinkedIn du menu : un carré de 44 px (taille tactile), logo en bleu LinkedIn, ouvre le profil dans un nouvel onglet. */
+/** Icône LinkedIn du menu : un carré de 44 px (taille tactile), logo dans la couleur brique du thème, ouvre le profil dans un nouvel onglet. */
 export function LinkedInLink() {
   return (
     <a
@@ -16,7 +16,7 @@ export function LinkedInLink() {
       title="LinkedIn"
       className={cn('inline-flex size-11 shrink-0 items-center justify-center rounded-kh transition-colors hover:bg-kh-surface-2', FOCUS)}
     >
-      <LinkedInIcon className="size-6" />
+      <LinkedInIcon className="size-6 text-kh-accent" />
     </a>
   );
 }

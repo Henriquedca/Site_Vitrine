@@ -32,7 +32,7 @@ export function SiteFooter() {
               href={SITE.linkedin}
               variant="secondary"
               className="mt-6"
-              icon={<LinkedInIcon />}
+              icon={<LinkedInIcon className="size-[1.1em] text-kh-accent" />}
               target="_blank"
               rel="noopener noreferrer"
             >
