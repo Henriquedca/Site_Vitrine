@@ -1,0 +1,93 @@
+'use client';
+
+import { useEffect, useId, useRef } from 'react';
+import { Text } from '@/components/klarhimmel/editing';
+import { ActionLink, Container, Eyebrow, Section } from '@/components/klarhimmel/blocks/_shared/kit';
+
+type Link = { label: string; href: string };
+
+export type HeroVideoProps = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  primary: Link;
+  secondary: Link;
+  video: {
+    /** La même vidéo, sans son, en deux formats : WebM (plus léger) et MP4 (pour les navigateurs qui ne lisent pas le WebM). */
+    webm: string;
+    mp4: string;
+    /** Image fixe : affichée au chargement et à la place de la vidéo si le visiteur a réduit les animations. */
+    poster: string;
+    /** Description de ce que montre la vidéo, pour les lecteurs d'écran. */
+    alt: string;
+  };
+};
+
+/**
+ * Accroche de l'accueil : même mise en page que le bloc Klarhimmel « hero-split », avec une vidéo en boucle
+ * à la place de l'image. Ce composant appartient au site (une réinstallation de Klarhimmel ne l'écrase pas).
+ */
+export function HeroVideo({ props }: { props: HeroVideoProps }) {
+  const id = useId();
+  return (
+    <Section labelledBy={id} className="pt-16 @3xl:pt-24">
+      <Container className="grid grid-cols-1 items-center gap-12 @4xl:grid-cols-[1.05fr_1fr] @4xl:gap-16">
+        <div>
+          <Eyebrow path={['eyebrow']} value={props.eyebrow} />
+          <div id={id}>
+            <Text path={['title']} value={props.title} as="h1" className="text-kh-title font-semibold" />
+          </div>
+          <Text path={['description']} value={props.description} as="p" multiline className="mt-6 max-w-kh-lead text-kh-lead text-kh-muted" />
+          <div className="mt-8 flex flex-wrap gap-3">
+            <ActionLink path={['primary']} value={props.primary} />
+            <ActionLink path={['secondary']} value={props.secondary} variant="secondary" />
+          </div>
+        </div>
+        <LoopVideo {...props.video} />
+      </Container>
+    </Section>
+  );
+}
+
+/** Vidéo décorative en boucle, muette, dans le même cadre que les images Klarhimmel (format 4:3). */
+function LoopVideo({ webm, mp4, poster, alt }: HeroVideoProps['video']) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  // Lecture automatique, sauf si le visiteur a demandé moins d'animations : l'image fixe reste alors affichée.
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return;
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const apply = () => {
+      if (query.matches) video.pause();
+      else video.play().catch(() => {});
+    };
+    apply();
+    query.addEventListener('change', apply);
+    return () => query.removeEventListener('change', apply);
+  }, []);
+
+  return (
+    <div
+      className="kh-media rounded-kh-xl border border-kh-line shadow-kh-3"
+      data-kh-ratio="4/3"
+      data-kh-media="image"
+      role="img"
+      aria-label={alt}
+    >
+      <video
+        ref={ref}
+        className="absolute inset-0 size-full object-cover"
+        poster={poster}
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+      >
+        <source src={webm} type="video/webm" />
+        <source src={mp4} type="video/mp4" />
+      </video>
+    </div>
+  );
+}

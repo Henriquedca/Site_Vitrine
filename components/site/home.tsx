@@ -1,7 +1,6 @@
 'use client';
 
 import { BlockSurface } from '@/components/klarhimmel/blocks/surface';
-import HeroSplit from '@/components/klarhimmel/blocks/hero-split';
 import FeaturesGrid from '@/components/klarhimmel/blocks/features-grid';
 import BlogCards from '@/components/klarhimmel/blocks/blog-cards';
 import FeaturesSplit from '@/components/klarhimmel/blocks/features-split';
@@ -10,6 +9,7 @@ import { BIO, POINTS, PORTRAIT } from '@/lib/profil';
 import { CONTACT_PAGE, SITE } from '@/lib/site';
 import type { Entry } from '@/lib/collections';
 import { entryCard } from './entry-cards';
+import { HeroVideo } from './hero-video';
 import { SiteShell } from './site-shell';
 
 /** Accueil. `articles` et `creations` : les trois derniers contenus visibles de chaque (lus sur le serveur, app/page.tsx). */
@@ -17,7 +17,7 @@ export function Home({ articles, creations }: { articles: Entry[]; creations: En
   return (
     <SiteShell current="/">
       <BlockSurface type="hero-split">
-        <HeroSplit
+        <HeroVideo
           props={{
             eyebrow: 'Accompagnement prévu d’ici 2030',
             title: 'Vos chiffres, clairs et utiles pour décider.',
@@ -25,10 +25,11 @@ export function Home({ articles, creations }: { articles: Entry[]; creations: En
               'Comptabilité, pilotage financier et contrôle de gestion\u00a0: je prépare un accompagnement complet pour les dirigeants. En attendant, je partage ici mes analyses, ma veille et mes outils.',
             primary: { label: 'Me contacter', href: '/contact' },
             secondary: { label: 'Lire les articles', href: '/articles' },
-            media: {
-              src: '/images/hero-tresorerie.svg',
-              srcDark: '/images/hero-tresorerie-sombre.svg',
-              alt: 'Exemple d’outil\u00a0: un suivi de trésorerie sur douze mois, de 18 k€ en janvier à 38 k€ en décembre',
+            video: {
+              webm: '/videos/accueil-graphique.webm',
+              mp4: '/videos/accueil-graphique.mp4',
+              poster: '/videos/accueil-graphique.jpg',
+              alt: 'Une carte en papier posée sur une nappe en lin, avec un graphique en hausse\u00a0: une courbe en flèche au-dessus de barres qui grandissent',
             },
           }}
         />

@@ -28,6 +28,7 @@ Puis ouvrir http://localhost:3000.
 | Notes de veille dans « Créations » | `content/veille/` |
 | Page Contact | `components/site/contact.tsx` |
 | Mentions légales et Confidentialité | `components/site/legal.tsx` |
+| Vidéo de l'accroche (accueil) | `components/site/hero-video.tsx`, fichiers dans `public/videos/` |
 | Images | `public/images/` |
 
 ## Écrire un article, une note de veille ou présenter un outil
