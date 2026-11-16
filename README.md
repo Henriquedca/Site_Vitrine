@@ -26,6 +26,8 @@ Puis ouvrir http://localhost:3000.
 | Articles (un fichier Markdown par article) | `content/articles/` |
 | Outils présentés dans « Créations » | `content/outils/` |
 | Notes de veille dans « Créations » | `content/veille/` |
+| Page Contact | `components/site/contact.tsx` |
+| Mentions légales et Confidentialité | `components/site/legal.tsx` |
 | Images | `public/images/` |
 
 ## Écrire un article, une note de veille ou présenter un outil

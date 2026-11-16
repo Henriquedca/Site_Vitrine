@@ -5,8 +5,9 @@ import HeroSplit from '@/components/klarhimmel/blocks/hero-split';
 import FeaturesGrid from '@/components/klarhimmel/blocks/features-grid';
 import BlogCards from '@/components/klarhimmel/blocks/blog-cards';
 import FeaturesSplit from '@/components/klarhimmel/blocks/features-split';
+import CtaBand from '@/components/klarhimmel/blocks/cta-band';
 import { BIO, POINTS, PORTRAIT } from '@/lib/profil';
-import { SITE } from '@/lib/site';
+import { CONTACT_PAGE, SITE } from '@/lib/site';
 import type { Entry } from '@/lib/collections';
 import { entryCard } from './entry-cards';
 import { SiteShell } from './site-shell';
@@ -92,6 +93,16 @@ export function Home({ articles, creations }: { articles: Entry[]; creations: En
             title: 'Le terrain d’abord, le conseil ensuite',
             description: '',
             items: [{ title: SITE.name, description: BIO, points: POINTS, media: PORTRAIT }],
+          }}
+        />
+      </BlockSurface>
+      <BlockSurface type="cta-band">
+        <CtaBand
+          props={{
+            title: 'Une question sur vos chiffres ou un projet à partager ?',
+            description: 'Écrivez-moi, je réponds personnellement.',
+            primary: CONTACT_PAGE,
+            secondary: { label: 'Voir mon parcours', href: '/a-propos' },
           }}
         />
       </BlockSurface>
