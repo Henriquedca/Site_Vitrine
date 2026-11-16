@@ -95,6 +95,6 @@ Chaque installation réécrit ces fichiers communs ; le script (`scripts/add-blo
 - **Pages** : Accueil, Articles, Créations (outils et veille), À propos, Contact.
 - **Accueil**, dans l'ordre : accroche, accompagnement complet (3 métiers), derniers articles, créations, qui suis-je, appel à me contacter.
 - Pas de collecte de données des visiteurs : un simple « Me contacter ».
-- Pas de barre au-dessus du menu ; l'e-mail n'apparaît que sur la page Contact et dans les pages légales ; LinkedIn est dans le menu (icône bleue) et dans le pied de page.
+- Pas de barre au-dessus du menu ; l'e-mail n'apparaît que sur la page Contact et dans les pages légales ; LinkedIn est dans le menu (icône couleur brique du thème) et dans le pied de page.
 - Le contenu occupe toute la largeur de l'écran (les articles gardent une colonne de lecture étroite).
 - Les outils sont présentés, jamais proposés en téléchargement.
