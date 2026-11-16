@@ -4,12 +4,12 @@ import { BlockSurface } from '@/components/klarhimmel/blocks/surface';
 import HeroSplit from '@/components/klarhimmel/blocks/hero-split';
 import FeaturesGrid from '@/components/klarhimmel/blocks/features-grid';
 import BlogCards from '@/components/klarhimmel/blocks/blog-cards';
-import type { Article } from '@/lib/articles';
-import { articleCard } from './article-cards';
+import type { Entry } from '@/lib/collections';
+import { entryCard } from './entry-cards';
 import { SiteShell } from './site-shell';
 
-/** Accueil. `articles` : les trois derniers articles visibles (lus sur le serveur, app/page.tsx). */
-export function Home({ articles }: { articles: Article[] }) {
+/** Accueil. `articles` et `creations` : les trois derniers contenus visibles de chaque (lus sur le serveur, app/page.tsx). */
+export function Home({ articles, creations }: { articles: Entry[]; creations: Entry[] }) {
   return (
     <SiteShell current="/">
       <BlockSurface type="hero-split">
@@ -63,8 +63,21 @@ export function Home({ articles }: { articles: Article[] }) {
               eyebrow: 'Articles',
               title: 'Derniers articles',
               description: 'Des analyses de fond pour comprendre ses chiffres et décider.',
-              posts: articles.map(articleCard),
+              posts: articles.map((a) => entryCard(a)),
               more: { label: 'Tous les articles', href: '/articles' },
+            }}
+          />
+        </BlockSurface>
+      )}
+      {creations.length > 0 && (
+        <BlockSurface type="blog-cards" tone="muted">
+          <BlogCards
+            props={{
+              eyebrow: 'Créations',
+              title: 'Outils et veille',
+              description: 'Des outils de gestion présentés en détail et des notes courtes sur ce qui change.',
+              posts: creations.map((c) => entryCard(c, 'collection')),
+              more: { label: 'Toutes les créations', href: '/creations' },
             }}
           />
         </BlockSurface>

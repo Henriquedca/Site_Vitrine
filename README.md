@@ -23,12 +23,21 @@ Puis ouvrir http://localhost:3000.
 | Contenu de la page d'accueil | `components/site/home.tsx` |
 | Blocs Klarhimmel installés (ne pas modifier à la main sauf besoin) | `components/klarhimmel/` |
 | Articles (un fichier Markdown par article) | `content/articles/` |
+| Outils présentés dans « Créations » | `content/outils/` |
+| Notes de veille dans « Créations » | `content/veille/` |
 | Images | `public/images/` |
 
-## Écrire un article
+## Écrire un article, une note de veille ou présenter un outil
 
-Un fichier Markdown par article dans `content/articles/`. Le nom du fichier devient l'adresse
-(`content/articles/mon-article.md` → `/articles/mon-article`).
+Un fichier Markdown par contenu. Le nom du fichier devient l'adresse :
+
+| Contenu | Dossier | Adresse |
+| --- | --- | --- |
+| Article | `content/articles/` | `/articles/<nom>` |
+| Outil (présenté, pas en téléchargement) | `content/outils/` | `/creations/outils/<nom>` |
+| Note de veille (courte) | `content/veille/` | `/creations/veille/<nom>` |
+
+Les trois ont le même format. Un outil a en plus `format: Excel` (ou PDF, Notion…), affiché à côté de la date.
 
 ```markdown
 ---
@@ -56,8 +65,8 @@ Texte, listes à puces, **gras**, liens et tableaux :
 
 - Les **brouillons** sont visibles en développement (`npm run dev`) et masqués sur le site en ligne. Pour les voir sur une
   version de production (par exemple un aperçu Vercel), définir la variable d'environnement `SHOW_DRAFTS=true`.
-- L'accueil montre les trois derniers articles visibles. S'il n'y en a aucun, la section est masquée.
-- La mention « Bon à savoir : information générale » est ajoutée automatiquement à la fin de chaque article.
+- L'accueil montre les trois derniers articles et les trois dernières créations (outils et veille mêlés). Une section sans contenu visible est masquée.
+- Une mention est ajoutée automatiquement à la fin : « information générale » pour les articles et la veille, « pas en téléchargement, écrivez-moi » pour les outils.
 - Les espaces insécables avant « : ; ? ! » sont ajoutées automatiquement.
 
 ## Ajouter un bloc Klarhimmel
@@ -79,3 +88,4 @@ Chaque installation réécrit ces fichiers communs ; le script (`scripts/add-blo
 - **Pages** : Accueil, Articles, Créations (outils et veille), À propos, Contact.
 - **Accueil**, dans l'ordre : accroche, accompagnement complet (3 métiers), derniers articles, créations, qui suis-je, appel à me contacter.
 - Pas de collecte de données des visiteurs : un simple « Me contacter ».
+- Les outils sont présentés, jamais proposés en téléchargement.

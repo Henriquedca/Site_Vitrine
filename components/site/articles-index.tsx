@@ -3,11 +3,11 @@
 import { BlockSurface } from '@/components/klarhimmel/blocks/surface';
 import HeroMinimal from '@/components/klarhimmel/blocks/hero-minimal';
 import BlogList from '@/components/klarhimmel/blocks/blog-list';
-import type { Article } from '@/lib/articles';
-import { articleHref } from './article-cards';
+import type { Entry } from '@/lib/collections';
+import { entryRow } from './entry-cards';
 import { SiteShell } from './site-shell';
 
-export function ArticlesIndex({ articles }: { articles: Article[] }) {
+export function ArticlesIndex({ articles }: { articles: Entry[] }) {
   return (
     <SiteShell current="/articles">
       <BlockSurface type="hero-minimal">
@@ -28,13 +28,7 @@ export function ArticlesIndex({ articles }: { articles: Article[] }) {
               title: '',
               description: '',
               // Le bloc affiche 8 articles au plus : une pagination sera ajoutée au-delà.
-              posts: articles.slice(0, 8).map((a) => ({
-                date: a.brouillon ? `${a.dateLabel} · Brouillon` : a.dateLabel,
-                title: a.titre,
-                excerpt: a.chapeau,
-                category: a.categorie,
-                href: articleHref(a),
-              })),
+              posts: articles.slice(0, 8).map(entryRow),
               more: { label: '', href: '' },
             }}
           />

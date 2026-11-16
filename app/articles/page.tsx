@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { ArticlesIndex } from '@/components/site/articles-index';
-import { getArticles } from '@/lib/articles';
+import { getEntries } from '@/lib/content';
 
 export const metadata: Metadata = {
   title: 'Articles · Henrique da Costa Araújo',
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  return <ArticlesIndex articles={await getArticles()} />;
+  return <ArticlesIndex articles={await getEntries('articles')} />;
 }
