@@ -93,7 +93,8 @@ Chaque installation réécrit ces fichiers communs ; le script (`scripts/add-blo
 - **Palette « Lin »** : fond lin clair, texte brun très foncé, accent brique pour les boutons. Mode sombre prévu.
 - **Titres** en Bricolage Grotesque, **texte** en Inter.
 - **Pages** : Accueil, Articles, Créations (outils et veille), À propos, Contact.
-- **Accueil**, dans l'ordre : accroche, accompagnement complet (3 métiers), derniers articles, créations, qui suis-je, appel à me contacter.
+- **Accueil**, dans l'ordre : accroche (vidéo), « Mes spécialités » (comptabilité, fiscalité, pilotage financier), derniers articles et créations en rangées qui défilent vers la droite (`components/site/content-carousel.tsx`), bandeau « Me contacter ». Le parcours est sur la page À propos.
+- **Pied de page** compact et sombre (couleurs dans `app/globals.css`, classe `.site-footer`).
 - Pas de collecte de données des visiteurs : un simple « Me contacter ».
 - Pas de barre au-dessus du menu ; l'e-mail n'apparaît que sur la page Contact et dans les pages légales ; LinkedIn est dans le menu (icône couleur brique du thème) et dans le pied de page.
 - Le contenu occupe toute la largeur de l'écran (les articles gardent une colonne de lecture étroite).

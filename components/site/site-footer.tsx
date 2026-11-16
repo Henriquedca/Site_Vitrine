@@ -1,66 +1,52 @@
 'use client';
 
-import { ButtonLink, safeHref } from '@/components/klarhimmel/ui/button';
+import { safeHref } from '@/components/klarhimmel/ui/button';
 import { Container } from '@/components/klarhimmel/blocks/_shared/kit';
 import { FOCUS } from '@/components/klarhimmel/blocks/_shared/d-chrome-kit';
 import { cn } from '@/components/klarhimmel/lib/utils';
 import { CONTACT_PAGE, LEGAL_LINKS, PAGES, SITE } from '@/lib/site';
 import { LinkedInIcon } from './icons';
 
-const COLUMNS = [
-  { title: 'Le site', links: [{ label: 'Accueil', href: '/' }, ...PAGES] },
-  { title: 'Contact', links: [CONTACT_PAGE] },
-];
+const LINKS = [{ label: 'Accueil', href: '/' }, ...PAGES, { label: 'Contact', href: CONTACT_PAGE.href }];
 
-const LINK = cn('inline-flex min-h-11 items-center rounded-kh-sm text-kh-small text-kh-muted transition-colors hover:text-kh-ink', FOCUS);
+const LINK = cn('inline-flex min-h-11 items-center rounded-kh-sm px-2 transition-colors hover:text-[var(--footer-ink)]', FOCUS);
 
 /**
- * Pied de page du site : même style que le bloc Klarhimmel « footer-columns », avec un bouton LinkedIn et son logo
- * (le bloc n'affiche pas d'icônes). Ce composant appartient au site : une réinstallation de Klarhimmel ne l'écrase pas.
+ * Pied de page du site : une bande compacte et sombre (couleurs dans app/globals.css, classe .site-footer).
+ * Ce composant appartient au site : une réinstallation de Klarhimmel ne l'écrase pas.
  */
 export function SiteFooter() {
   return (
-    <footer className="border-t border-kh-line bg-kh-canvas py-16">
-      <Container>
-        <div className="grid gap-8 @3xl:grid-cols-[minmax(0,1fr)_minmax(0,2.5fr)]">
-          <div>
-            <p className="text-kh-heading font-semibold tracking-tight">{SITE.name}</p>
-            <p className="mt-3 max-w-xs text-kh-small text-kh-muted">
-              {SITE.subtitle}. Un accompagnement complet pour les dirigeants, prévu d’ici 2030.
-            </p>
-            <ButtonLink
-              href={SITE.linkedin}
-              variant="secondary"
-              className="mt-6"
-              icon={<LinkedInIcon className="size-[1.1em] text-kh-accent" />}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </ButtonLink>
-          </div>
-          <div className="grid w-full max-w-[40rem] grid-cols-2 gap-x-4 gap-y-8">
-            {COLUMNS.map((col) => (
-              <nav key={col.title} aria-label={col.title}>
-                <h2 className="text-kh-small font-medium text-kh-ink">{col.title}</h2>
-                <ul className="mt-3 space-y-1">
-                  {col.links.map((l) => (
-                    <li key={l.href}>
-                      <a href={safeHref(l.href)} className={LINK}>{l.label}</a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            ))}
-          </div>
+    <footer className="site-footer py-6">
+      <Container className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2 @3xl:flex-row @3xl:items-center @3xl:justify-between @3xl:gap-6">
+          <p className="text-kh-small font-semibold text-[var(--footer-ink)]">{SITE.name}</p>
+          <nav aria-label="Pages du site">
+            <ul className="-mx-2 flex flex-wrap text-kh-small">
+              {LINKS.map((l) => (
+                <li key={l.href}>
+                  <a href={safeHref(l.href)} className={LINK}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <a
+            href={SITE.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(LINK, '-mx-2 gap-2 text-kh-small font-medium text-[var(--footer-accent)] hover:text-[var(--footer-accent)] hover:underline')}
+          >
+            <LinkedInIcon className="size-5" />
+            LinkedIn
+          </a>
         </div>
-        <div className="mt-14 flex flex-col gap-2 border-t border-kh-line pt-4 @3xl:flex-row @3xl:items-center @3xl:justify-between @3xl:gap-6">
-          <p className="text-kh-caption text-kh-muted">© 2026 {SITE.name}</p>
+        <div className="flex flex-col gap-1 border-t border-[var(--footer-line)] pt-3 text-kh-caption @3xl:flex-row @3xl:items-center @3xl:justify-between">
+          <p>© 2026 {SITE.name}</p>
           <nav aria-label="Informations légales">
-            <ul className="-mx-2 flex flex-wrap @3xl:mx-0 @3xl:-mr-2">
+            <ul className="-mx-2 flex flex-wrap">
               {LEGAL_LINKS.map((l) => (
                 <li key={l.href}>
-                  <a href={safeHref(l.href)} className={cn(LINK, 'px-2 text-kh-caption')}>{l.label}</a>
+                  <a href={safeHref(l.href)} className={LINK}>{l.label}</a>
                 </li>
               ))}
             </ul>

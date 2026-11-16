@@ -23,3 +23,18 @@ body {
 .kh-root .max-w-kh-page {
   max-width: none;
 }
+
+/* Pied de page : bande sombre et compacte (components/site/site-footer.tsx).
+   Clair : brun très foncé. Sombre : plus foncé que le fond de page, pour rester une bande distincte. */
+.site-footer {
+  --footer-bg: #241c17;
+  --footer-ink: #f7f2eb;
+  --footer-muted: #c9bcae;
+  --footer-line: rgb(247 242 235 / 0.14);
+  --footer-accent: #e8977a;
+  background: var(--footer-bg);
+  color: var(--footer-muted);
+}
+.kh-root[data-kh-mode='dark'] .site-footer {
+  --footer-bg: #0f0b09;
+}

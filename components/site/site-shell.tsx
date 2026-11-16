@@ -17,7 +17,7 @@ export function SiteShell({ current, children }: { current?: string; children: R
         <SiteNavbar props={{ brand: SITE.name, links: PAGES, current, cta: CONTACT_PAGE }} extra={<LinkedInLink />} />
       </BlockSurface>
       <main>{children}</main>
-      <BlockSurface type="footer" tone="muted">
+      <BlockSurface type="footer">
         <SiteFooter />
       </BlockSurface>
     </Theme>
