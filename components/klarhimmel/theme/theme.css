@@ -1,0 +1,4 @@
+/* Klarhimmel UI theme with every font family: tokens (theme-core.css) plus fonts.css. For only some families, import
+   `theme-core.css` and the `fonts/<family>.css` files you use. */
+@import './fonts.css';
+@import './theme-core.css';

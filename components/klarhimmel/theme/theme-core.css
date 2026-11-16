@@ -1,0 +1,7 @@
+/* The tokens (theme-base.css) plus a Tailwind @source of the whole library, so every class any block or component uses is generated.
+   A consumer that renders only some blocks imports theme-base.css instead and adds its own @source lines for those blocks
+   (e.g. @source "../node_modules/@klarhimmel/ui/src/blocks/hero-centered";), which roughly halves the stylesheet. */
+@import './theme-base.css';
+
+@source "../";
+@source not "../**/*.test.*";

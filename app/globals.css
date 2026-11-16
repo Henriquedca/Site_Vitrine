@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+@import '../components/klarhimmel/theme/theme.css';
+
+/* Fond de la fenêtre (au-delà du contenu, au défilement élastique) : mêmes valeurs que le fond du thème (lib/theme.ts). */
+html,
+body {
+  margin: 0;
+  background: #f7f2eb;
+}
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background: #1a1513;
+  }
+}

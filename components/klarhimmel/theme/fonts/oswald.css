@@ -1,0 +1,2 @@
+/* One family, on demand: import this instead of fonts.css to ship only oswald. */
+@import '@fontsource-variable/oswald/index.css';

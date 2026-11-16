@@ -1,0 +1,12 @@
+/* Every family the Style `FontFamily` enum offers. Faces load on demand (unicode-range), so unused families cost nothing in the browser,
+   but every file lands in the build. To ship only some, import `fonts/<family>.css` yourself and use `theme-core.css` instead of `theme.css`. */
+@import './fonts/geist.css';
+@import './fonts/geist-mono.css';
+@import './fonts/inter.css';
+@import './fonts/space-grotesk.css';
+@import './fonts/dm-sans.css';
+@import './fonts/fraunces.css';
+@import './fonts/jetbrains-mono.css';
+@import './fonts/instrument-serif.css';
+@import './fonts/oswald.css';
+@import './fonts/bricolage-grotesque.css';

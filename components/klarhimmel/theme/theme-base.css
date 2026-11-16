@@ -1,0 +1,555 @@
+/* Klarhimmel UI tokens. ADDITIVE: no Tailwind theme resets, every name carries the kh- prefix, every value is
+   scoped to .kh-root / [data-kh-theme] / [data-kh-tone], so one Tailwind build can host an app's own chrome too.
+
+   Layers
+   1. Palette   --kh-p-*   seven base colours + mode (light/dark) + theme (brand/wireframe). Set by <Theme> / styleToCssVars.
+   2. Surface   --kh-*     what components read. Mapped from the palette, re-mapped per tone, shades derived with color-mix.
+   3. Tailwind  @theme inline names (bg-kh-surface, text-kh-title, rounded-kh, ...).
+   Consumers: @import "tailwindcss"; @import "@klarhimmel/ui/theme.css"; (theme-core.css adds the @source of the whole library).
+   This file has no @source: import it instead of theme-core.css and @source only the blocks you render, for a smaller stylesheet. */
+
+/* Metric-matched local fallbacks, so the web-font swap does not move the layout (fontStack() names them). */
+@import './font-fallbacks.css';
+
+
+/* ---------- 1. Palette: brand, light ---------- */
+:where(.kh-root, [data-kh-theme]) {
+  --kh-p-canvas: #faf9f7;
+  --kh-p-surface: #ffffff;
+  --kh-p-ink: #17171a;
+  --kh-p-muted: #6b6b75;
+  --kh-p-line: #e8e6e1;
+  --kh-p-accent: #1c6ee0;
+  --kh-p-accent-fg: #ffffff;
+
+  --kh-font-display: 'Geist Variable', 'Geist Variable Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --kh-font-sans: 'Geist Variable', 'Geist Variable Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --kh-font-mono: 'Geist Mono Variable', 'Geist Mono Variable Fallback', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --kh-radius: 8px;
+  --kh-size: 16px;
+  --kh-dur: 150ms;
+  /* the brand mark beside the wordmark (Felix 2026-10-10, from klarhimmel.com's .brandmark: 23px mark by a 20px wordmark, 10px gap) */
+  --kh-mark-size: 1.15em;
+  --kh-mark-gap: 0.5em;
+  --kh-mark-min: 20px;
+  --kh-shadow-rgb: 23 23 26;
+  --kh-shadow-a: 1;
+  --kh-tone-muted: 4%; /* how much ink the muted tone mixes into the canvas */
+  --kh-p-danger: #b42318; /* error text and invalid borders: not part of a Style, so one value per mode (>= 4.5:1 on every canvas of the mode) */
+  --kh-p-warning: #8a5300; /* 'needs attention' text (a high priority, a date close by): same rule as danger */
+  color-scheme: light;
+}
+
+/* brand, dark (portal tokens.css dark) */
+[data-kh-theme='brand'][data-kh-mode='dark'] {
+  --kh-p-canvas: #0b0b0d;
+  --kh-p-surface: #1a1a1f;
+  --kh-p-ink: #f2f1ee;
+  --kh-p-muted: #8f8f9a;
+  --kh-p-line: #383842;
+  --kh-p-accent: #5b9bf5;
+  --kh-p-accent-fg: #0b1a2c;
+  --kh-shadow-rgb: 0 0 0;
+  --kh-shadow-a: 3;
+  --kh-tone-muted: 7%;
+  --kh-p-danger: #ff8a7d;
+  --kh-p-warning: #f2b45c;
+  color-scheme: dark;
+}
+
+/* wireframe: greys only, radius 0, one neutral sans, no shadows, no motion */
+[data-kh-theme='wireframe'] {
+  --kh-p-canvas: #f4f4f4;
+  --kh-p-surface: #ffffff;
+  --kh-p-ink: #222222;
+  --kh-p-muted: #666666;
+  --kh-p-line: #d4d4d4;
+  --kh-p-accent: #3a3a3a;
+  --kh-p-accent-fg: #ffffff;
+  --kh-font-display: 'Geist Variable', 'Geist Variable Fallback', ui-sans-serif, system-ui, sans-serif;
+  --kh-font-sans: 'Geist Variable', 'Geist Variable Fallback', ui-sans-serif, system-ui, sans-serif;
+  --kh-font-mono: 'Geist Variable', 'Geist Variable Fallback', ui-sans-serif, system-ui, sans-serif;
+  --kh-radius: 0px;
+  --kh-dur: 0s;
+}
+[data-kh-theme='wireframe'][data-kh-mode='dark'] {
+  --kh-p-canvas: #1d1d1d;
+  --kh-p-surface: #2a2a2a;
+  --kh-p-ink: #ececec;
+  --kh-p-muted: #9a9a9a;
+  --kh-p-line: #444444;
+  --kh-p-accent: #bdbdbd;
+  --kh-p-accent-fg: #1d1d1d;
+  --kh-tone-muted: 7%;
+  color-scheme: dark;
+}
+
+/* A second action in the brand's second colour (Palette.accent2, styleToCssVars): filled where the style has one, else the outline a
+   secondary button has. The fallbacks are the outline, so a style without accent2 looks exactly as before. */
+.kh-accent2 { background: var(--kh-p-accent2, transparent); color: var(--kh-p-accent2-fg, var(--kh-ink)); border-color: var(--kh-p-accent2, var(--kh-edge)); }
+.kh-accent2:hover { background: color-mix(in oklab, var(--kh-p-accent2, transparent) 88%, var(--kh-p-accent2-fg, var(--kh-ink))); }
+
+/* ---------- 2. Surface tokens, mapped from the palette ---------- */
+:where(.kh-root, [data-kh-theme], [data-kh-tone]) {
+  --kh-canvas: var(--kh-p-canvas);
+  --kh-surface: var(--kh-p-surface);
+  --kh-ink: var(--kh-p-ink);
+  --kh-muted: color-mix(in oklab, var(--kh-p-muted) 80%, var(--kh-p-ink)); /* a margin over the palette's muted: it also sits on surface-2/3 and the muted tone */
+  --kh-line: var(--kh-p-line);
+  --kh-accent: var(--kh-p-accent);
+  --kh-accent-fg: var(--kh-p-accent-fg);
+  /* What accent-fg text sits on (buttons, the accent band): the palette's accentFill when it has one, so a light brand colour
+     (a yellow) fills its buttons as itself while accent stays the darker one text, links and small marks need on the canvas. */
+  --kh-accent-fill: var(--kh-p-accent-fill, var(--kh-p-accent));
+  --kh-danger: var(--kh-p-danger);
+  --kh-warning: var(--kh-p-warning);
+}
+
+/* The app shell's panels (Felix 2026-10-22 14:4x: the default look for every app; values from the prototype seat, 36e39dbc
+   panels.tsx SHELL_VARS; Felix 16:33 "reduce border radius and gap slightly": radius 16 -> 12, gap 10 -> 8, inner radii scaled). All mixes of theme tokens, so dark mode follows. Used by SidebarLayout (src/ui/sidebar.css), board
+   columns and cards. Declared on every tone too: a custom property resolves where it is declared, so from the root alone a board
+   column on an inverse band kept the root's light surface under the band's light ink (1.05:1). */
+:where(.kh-root, [data-kh-theme], [data-kh-tone]) {
+  --kh-shell-canvas: color-mix(in oklab, var(--kh-canvas), #000 6%);
+  --kh-shell-gap: 8px;
+  --kh-panel-radius: 12px;
+  --kh-panel-shadow: 0 0 0 1px color-mix(in oklab, var(--kh-ink) 6%, transparent), 0 1px 2px rgb(0 0 0 / 0.04), 0 4px 12px rgb(0 0 0 / 0.03);
+  --kh-panel-bg: var(--kh-surface);
+  --kh-well: color-mix(in oklab, var(--kh-surface) 55%, var(--kh-shell-canvas));
+  --kh-well-radius: 8px;
+  --kh-row-active: color-mix(in oklab, var(--kh-ink) 6%, var(--kh-surface));
+  --kh-card-line: color-mix(in oklab, var(--kh-ink) 9%, transparent);
+  --kh-card-radius: 8px;
+  --kh-card-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+  --kh-card-shadow-hover: 0 0 0 1px color-mix(in oklab, var(--kh-ink) 6%, transparent), 0 4px 12px rgb(0 0 0 / 0.08);
+  /* Status fills (a dot, a circle with a white figure): todo, doing, review, done. --kh-warning is too dark in light mode for a fill. */
+  --kh-status-todo: var(--kh-muted);
+  --kh-status-doing: var(--kh-accent);
+  --kh-status-review: oklch(from var(--kh-accent) max(l, 0.66) 0.15 70);
+  --kh-status-done: oklch(from var(--kh-accent) max(l, 0.58) 0.14 150);
+}
+
+/* A selected item raised on a track (a toggle group's on item): the surface in light mode; in dark mode the surface is the panel's
+   own colour and a shadow does not show, so it steps lighter (prototype 15:24, the /ws focus bar's Board / List / Documents). */
+:where(.kh-root, [data-kh-theme]) { --kh-selected: var(--kh-surface); }
+[data-kh-mode='dark'] { --kh-selected: color-mix(in oklab, var(--kh-ink) 14%, var(--kh-surface)); }
+
+/* A fill on the surface that never matches the panel: the chat's own bubble, a composer chip, the stop button. surface-2 is the
+   panel's colour in dark mode, so these mix ink into the surface instead (Klar Portal 19:11 on /ws dark; Felix 18:1x "These don't
+   look that good in darkmode"). */
+/* Recomputed on each tone surface: a band sets its own ink and surface, and a token mixed at the root kept the root's colours
+   (the user bubble on an inverse or accent band read 1.3:1, overflow sweep 22:5x 10-22). */
+:where(.kh-root, [data-kh-theme], [data-kh-tone]) { --kh-bubble: color-mix(in oklab, var(--kh-ink) 7%, var(--kh-surface)); }
+/* The accent band carries light ink on a saturated surface: mixing that ink in washed the bubble out (4.0-4.4:1), so it darkens. */
+:where([data-kh-tone='accent']) { --kh-bubble: color-mix(in oklab, var(--kh-surface) 86%, black); }
+/* Dark: the panel is lighter than the canvas, so a tint mixed into the canvas sank below it (the 'Current plan' and 'Due' pills
+   read as bare blue text on /ws, Klar Portal 10-22 and the 10-24 sweep); it mixes into the surface, a little stronger. */
+[data-kh-mode='dark'], [data-kh-mode='dark'] [data-kh-tone] { --kh-accent-soft-mix: 16%; --kh-accent-soft-base: var(--kh-surface); }
+[data-kh-mode='dark'] [data-kh-tone='inverse'] { --kh-accent-soft-mix: 11%; --kh-accent-soft-base: var(--kh-canvas); } /* the inverse band is light here */
+[data-kh-mode='dark'], [data-kh-mode='dark'] [data-kh-tone] { --kh-bubble: color-mix(in oklab, var(--kh-ink) 14%, var(--kh-surface)); }
+
+/* Tones re-map the surface inside one section. They read --kh-p-*, never themselves, so they cannot cycle. */
+[data-kh-tone='muted'] {
+  --kh-canvas: color-mix(in oklab, var(--kh-p-ink) var(--kh-tone-muted), var(--kh-p-canvas));
+}
+[data-kh-tone='inverse'] {
+  --kh-canvas: var(--kh-p-ink);
+  --kh-surface: color-mix(in oklab, var(--kh-p-canvas) 9%, var(--kh-p-ink));
+  --kh-ink: var(--kh-p-canvas);
+  --kh-muted: color-mix(in oklab, var(--kh-p-canvas) 80%, var(--kh-p-ink));
+  --kh-line: color-mix(in oklab, var(--kh-p-canvas) 16%, var(--kh-p-ink));
+  --kh-accent: oklch(from var(--kh-p-accent) max(l, 0.74) c h); /* lightness pinned so a dark or black accent still reads on the dark surface */
+  --kh-accent-fg: var(--kh-p-ink);
+  --kh-accent-fill: var(--kh-accent);
+}
+[data-kh-tone='inverse'] { --kh-danger: #ff8a7d; --kh-warning: #f2b45c; }
+/* Text on a photo (hero-cover): light on a fixed near-black in either mode, so a dark-mode page cannot flip it to dark ink on the
+   picture. The primary button turns white on dark; an accent button keeps the accent pinned light, as on the inverse band. */
+[data-kh-tone='cover'] {
+  --kh-canvas: #0d0d0e;
+  --kh-surface: #1c1c1e;
+  --kh-ink: #ffffff;
+  --kh-muted: #dcdcdc;
+  --kh-line: rgb(255 255 255 / 0.28);
+  --kh-accent: oklch(from var(--kh-p-accent) max(l, 0.74) c h);
+  --kh-accent-fg: #0d0d0e;
+  --kh-accent-fill: var(--kh-accent);
+  --kh-danger: #ff8a7d;
+  --kh-warning: #f2b45c;
+}
+/* The scrim between the photo and the text: never under 55% black, so white body text keeps about 4.5:1 even on a white photo;
+   darker toward the foot, where the text sits in the start alignment. */
+[data-kh-tone='cover'] {
+  --kh-line-strong: color-mix(in oklab, var(--kh-ink) 80%, var(--kh-canvas));
+  --kh-edge: var(--kh-line-strong);
+  --kh-ghost-edge: var(--kh-edge);
+}
+.kh-cover-scrim { background: linear-gradient(to top, rgb(0 0 0 / 0.8), rgb(0 0 0 / 0.58) 55%, rgb(0 0 0 / 0.55)); }
+[data-kh-mode='dark'] [data-kh-tone='inverse'] {
+  --kh-accent: oklch(from var(--kh-p-accent) min(l, 0.46) c h);
+  --kh-accent-fill: var(--kh-accent);
+  /* darker than light mode's: a derived dark palette's ink, this band's canvas, can be a pale grey (#b42318 measured 3.6:1) */
+  --kh-danger: #8f1a12;
+  --kh-warning: #6e4200;
+}
+/* An inverse panel that follows the mode (cta-band; Felix 10-23 22:4x "too bright for my eyes"): a dark panel on a light page, but in
+   dark mode the page's own colours on a raised surface with a hairline, never a light slab on a dark page. */
+[data-kh-mode='dark'] [data-kh-tone='inverse'][data-kh-dark='raised'] {
+  --kh-canvas: color-mix(in oklab, var(--kh-p-ink) 6%, var(--kh-p-surface));
+  --kh-surface: color-mix(in oklab, var(--kh-p-ink) 10%, var(--kh-p-surface));
+  --kh-ink: var(--kh-p-ink);
+  --kh-muted: color-mix(in oklab, var(--kh-p-muted) 80%, var(--kh-p-ink));
+  --kh-line: var(--kh-p-line);
+  --kh-accent: var(--kh-p-accent);
+  --kh-accent-fg: var(--kh-p-accent-fg);
+  --kh-accent-fill: var(--kh-p-accent-fill, var(--kh-p-accent));
+  --kh-danger: var(--kh-p-danger);
+  --kh-warning: var(--kh-p-warning);
+  --kh-line-strong: color-mix(in oklab, var(--kh-ink) 13%, var(--kh-line));
+  --kh-edge: var(--kh-line-strong);
+  --kh-ghost-edge: transparent;
+  --kh-accent-soft-mix: 16%;
+  --kh-accent-soft-base: var(--kh-surface);
+  box-shadow: inset 0 0 0 1px var(--kh-p-line);
+}
+[data-kh-tone='accent'] {
+  --kh-canvas: var(--kh-p-accent-fill, var(--kh-p-accent));
+  --kh-surface: var(--kh-p-accent-fill, var(--kh-p-accent)); /* not lighter or darker: ink on it keeps the accent-fg/accent contrast; cards read by their line */
+  --kh-ink: var(--kh-p-accent-fg);
+  --kh-muted: color-mix(in oklab, var(--kh-p-accent-fg) 97%, var(--kh-p-accent-fill, var(--kh-p-accent)));
+  --kh-line: color-mix(in oklab, var(--kh-p-accent-fg) 28%, var(--kh-p-accent-fill, var(--kh-p-accent)));
+  --kh-accent: var(--kh-p-accent-fg);
+  --kh-accent-fg: var(--kh-p-accent-fill, var(--kh-p-accent));
+  --kh-accent-fill: var(--kh-accent);
+  /* shades step away from the foreground (a mid-dark accent carries a light fg, so darker; a light accent, lighter) to keep ink readable on them */
+  --kh-surface-2: oklch(from var(--kh-p-accent-fill, var(--kh-p-accent)) calc(l + sign(l - 0.6) * 0.05) c h);
+  --kh-surface-3: oklch(from var(--kh-p-accent-fill, var(--kh-p-accent)) calc(l + sign(l - 0.6) * 0.09) c h);
+  --kh-accent-soft: var(--kh-surface-2); /* the accent here is the fg colour, so the generic 11% mix would lighten the fill */
+}
+
+/* Internal tone for code consoles and terminals: dark in light and dark mode alike (not part of the public Tone union). */
+[data-kh-tone='console'] {
+  --kh-canvas: #111114;
+  --kh-surface: #1b1b20;
+  --kh-ink: #f2f1ee;
+  --kh-muted: #9c9ca8;
+  --kh-line: #2d2d35;
+  --kh-accent: #7fb4ff;
+  --kh-accent-fg: #0b1a2c;
+  --kh-accent-fill: var(--kh-accent);
+  --kh-danger: #ff8a7d;
+  --kh-warning: #f2b45c;
+}
+[data-kh-theme='wireframe'] [data-kh-tone='console'] {
+  --kh-canvas: #262626;
+  --kh-surface: #303030;
+  --kh-muted: #a0a0a0;
+  --kh-line: #444444;
+  --kh-accent: #c8c8c8;
+  --kh-accent-fg: #262626;
+  --kh-accent-fill: var(--kh-accent);
+}
+
+/* How far the two surface shades step from the canvas toward the ink. Dark mode steps further: its panels are lighter than the
+   canvas, so the light-mode steps left surface-3 the same colour as a panel and a selected row, a pressed chip or a progress
+   track disappeared. Blocks still add a non-colour cue (a bar, a border, a weight) to anything that shows a state. */
+:where(.kh-root, [data-kh-theme]) {
+  --kh-shade-2: 5%;
+  --kh-shade-3: 9%;
+}
+[data-kh-mode='dark'] {
+  --kh-shade-2: 9%;
+  --kh-shade-3: 16%;
+}
+
+/* Derived shades. Declared with the same selector as the mapping so they follow a tone's re-mapped colours. */
+:where(.kh-root, [data-kh-theme], [data-kh-tone]) {
+  --kh-surface-2: color-mix(in oklab, var(--kh-ink) var(--kh-shade-2), var(--kh-canvas));
+  --kh-surface-3: color-mix(in oklab, var(--kh-ink) var(--kh-shade-3), var(--kh-canvas));
+  --kh-line-strong: color-mix(in oklab, var(--kh-ink) 13%, var(--kh-line));
+  --kh-ink-2: color-mix(in oklab, var(--kh-ink) 62%, var(--kh-muted));
+  --kh-accent-hover: color-mix(in oklab, var(--kh-accent-fill) 86%, var(--kh-ink));
+  --kh-accent-soft: color-mix(in oklab, var(--kh-accent) var(--kh-accent-soft-mix, 11%), var(--kh-accent-soft-base, var(--kh-canvas)));
+  --kh-accent-ink: color-mix(in oklab, var(--kh-accent) var(--kh-accent-ink-mix, 78%), var(--kh-ink)); /* the mix: styleToCssVars, accentInkMix */
+  --kh-focus: color-mix(in oklab, var(--kh-ink) 72%, transparent);
+  --kh-on-ink: var(--kh-canvas); /* text on an ink-coloured fill */
+  /* The primary button: ink by default; a Style with buttons 'accent' sets --kh-primary-ink to 0% (styleToCssVars), and the
+     mix then gives the accent pair. A 100%/0% mix rather than a swap, so every tone re-derives it from its own accent and ink
+     (on the accent band the button turns accent-fg on accent, the pair presets.test.ts checks). Ink comes first: the CSS build
+     adds a no-color-mix fallback from the first colour, so an old browser keeps the ink button. */
+  --kh-primary: color-mix(in oklab, var(--kh-ink) var(--kh-primary-ink, 100%), var(--kh-accent-fill));
+  --kh-on-primary: color-mix(in oklab, var(--kh-on-ink) var(--kh-primary-ink, 100%), var(--kh-accent-fg));
+}
+
+/* The edge of a control (the border of a secondary button, the underline of a link). On the light and muted bands it is the
+   quiet line-strong. On the inverse and accent bands that colour is a few percent away from the band and the control
+   disappears, so there it is mixed far toward the ink: at least 3:1 against the band (WCAG 1.4.11; 80% is what the awkward mid-tone accents need), checked by
+   src/theme/edge.test.ts for the brand and every preset palette. `--kh-ghost-edge` is the same colour for buttons that are
+   otherwise borderless (ghost, soft): transparent on light bands, drawn on dark ones. */
+:where(.kh-root, [data-kh-theme], [data-kh-tone]) {
+  --kh-edge: var(--kh-line-strong);
+  --kh-ghost-edge: transparent;
+}
+[data-kh-tone='inverse'],
+[data-kh-tone='accent'] {
+  --kh-line-strong: color-mix(in oklab, var(--kh-ink) 80%, var(--kh-canvas)); /* every control edge that reads line-strong follows */
+  --kh-edge: var(--kh-line-strong);
+  --kh-ghost-edge: var(--kh-edge);
+}
+
+/* Accent tone: the fill is any brand colour, so no fixed red or amber reads on it; status text takes the band's ink (accent-fg,
+   which holds its contrast by design), and its words and icon carry the meaning, as in the wireframe theme. */
+[data-kh-tone='accent'] { --kh-danger: var(--kh-ink); --kh-warning: var(--kh-ink); }
+
+/* Dark mode + accent tone: the surface is light blue and ink is navy, so text on navy fills must be the light ink. */
+[data-kh-mode='dark'] [data-kh-tone='accent'] {
+  --kh-on-ink: var(--kh-p-ink);
+  --kh-accent-fg: var(--kh-p-ink);
+}
+
+/* Wireframe stays grey and legible: accent text is plain secondary ink. */
+[data-kh-theme='wireframe'],
+[data-kh-theme='wireframe'] [data-kh-tone] {
+  --kh-accent-ink: var(--kh-ink-2);
+  --kh-danger: var(--kh-ink);
+  --kh-warning: var(--kh-ink);
+}
+
+/* Radius scale from the base radius; type scale from the base size. */
+:where(.kh-root, [data-kh-theme]) {
+  --kh-r-sm: calc(var(--kh-radius) * 0.5);
+  --kh-r: var(--kh-radius);
+  --kh-r-lg: calc(var(--kh-radius) * 1.75);
+  --kh-r-xl: calc(var(--kh-radius) * 2.75);
+  --kh-r-pill: 999px;
+
+  --kh-text-caption: calc(var(--kh-size) * 0.8125);
+  --kh-text-small: calc(var(--kh-size) * 0.875);
+  --kh-text-body: var(--kh-size);
+  --kh-text-lead: calc(var(--kh-size) * 1.1875);
+  --kh-text-heading: calc(var(--kh-size) * 1.25);
+  /* fluid by the block's container (cqi), not the viewport; outside a block cqi falls back to viewport units */
+  --kh-text-title: clamp(calc(var(--kh-size) * 1.875), 0.9rem + 3cqi, calc(var(--kh-size) * 2.75));
+  --kh-text-display: clamp(calc(var(--kh-size) * 2.5), 0.8rem + 5.2cqi, calc(var(--kh-size) * 4.5));
+
+  --kh-section: clamp(4rem, 2rem + 6cqi, 7.5rem);
+  --kh-gutter: clamp(1.25rem, 0.5rem + 3.2cqi, 2.5rem);
+
+  --kh-shadow-1: 0 1px 2px rgb(var(--kh-shadow-rgb) / calc(0.05 * var(--kh-shadow-a)));
+  --kh-shadow-2: 0 1px 2px rgb(var(--kh-shadow-rgb) / calc(0.04 * var(--kh-shadow-a))), 0 6px 16px -4px rgb(var(--kh-shadow-rgb) / calc(0.08 * var(--kh-shadow-a)));
+  --kh-shadow-3: 0 2px 4px rgb(var(--kh-shadow-rgb) / calc(0.04 * var(--kh-shadow-a))), 0 16px 40px -8px rgb(var(--kh-shadow-rgb) / calc(0.14 * var(--kh-shadow-a)));
+}
+
+/* ---------- 3. Tailwind names ---------- */
+@theme inline {
+  --color-kh-canvas: var(--kh-canvas);
+  --color-kh-surface: var(--kh-surface);
+  --color-kh-surface-2: var(--kh-surface-2);
+  --color-kh-surface-3: var(--kh-surface-3);
+  --color-kh-ink: var(--kh-ink);
+  --color-kh-ink-2: var(--kh-ink-2);
+  --color-kh-muted: var(--kh-muted);
+  --color-kh-line: var(--kh-line);
+  --color-kh-line-strong: var(--kh-line-strong);
+  --color-kh-accent: var(--kh-accent);
+  --color-kh-accent-fill: var(--kh-accent-fill);
+  --color-kh-accent-hover: var(--kh-accent-hover);
+  --color-kh-accent-soft: var(--kh-accent-soft);
+  --color-kh-accent-ink: var(--kh-accent-ink);
+  --color-kh-accent-fg: var(--kh-accent-fg);
+  --color-kh-on-ink: var(--kh-on-ink);
+  --color-kh-primary: var(--kh-primary);
+  --color-kh-on-primary: var(--kh-on-primary);
+  --color-kh-danger: var(--kh-danger);
+  --color-kh-warning: var(--kh-warning);
+
+  --font-kh-display: var(--kh-font-display);
+  --font-kh-sans: var(--kh-font-sans);
+  --font-kh-mono: var(--kh-font-mono);
+
+  --text-kh-caption: var(--kh-text-caption);
+  --text-kh-caption--line-height: 1.5;
+  --text-kh-small: var(--kh-text-small);
+  --text-kh-small--line-height: 1.5;
+  --text-kh-body: var(--kh-text-body);
+  --text-kh-body--line-height: 1.6;
+  --text-kh-lead: var(--kh-text-lead);
+  --text-kh-lead--line-height: 1.55;
+  --text-kh-heading: var(--kh-text-heading);
+  --text-kh-heading--line-height: 1.3;
+  --text-kh-heading--letter-spacing: calc(-0.012em * var(--kh-track, 1) + var(--kh-case-track, 0em));
+  --text-kh-title: var(--kh-text-title);
+  --text-kh-title--line-height: 1.12;
+  --text-kh-title--letter-spacing: calc(-0.03em * var(--kh-track, 1) + var(--kh-case-track, 0em));
+  --text-kh-display: var(--kh-text-display);
+  --text-kh-display--line-height: 1.02;
+  --text-kh-display--letter-spacing: calc(-0.04em * var(--kh-track, 1) + var(--kh-case-track, 0em)); /* --kh-track: 0 for a condensed display face (styleToCssVars), whose letters would touch */
+
+  --radius-kh-sm: var(--kh-r-sm);
+  --radius-kh: var(--kh-r);
+  --radius-kh-lg: var(--kh-r-lg);
+  --radius-kh-xl: var(--kh-r-xl);
+  --radius-kh-pill: var(--kh-r-pill);
+
+  --shadow-kh-1: var(--kh-shadow-1);
+  --shadow-kh-2: var(--kh-shadow-2);
+  --shadow-kh-3: var(--kh-shadow-3);
+
+  --spacing-kh-section: var(--kh-section);
+  --spacing-kh-gutter: var(--kh-gutter);
+
+  --container-kh-page: 72rem;
+  --container-kh-narrow: 48rem;
+  --container-kh-prose: 40rem;
+  --container-kh-lead: 34rem;
+}
+
+/* ---------- Block surface ---------- */
+.kh-root,
+.kh-block {
+  font-family: var(--kh-font-sans);
+  font-size: var(--kh-text-body);
+  line-height: 1.6;
+  color: var(--kh-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.kh-root { background: var(--kh-canvas); }
+.kh-block {
+  background: var(--kh-canvas);
+  container-type: inline-size;
+  overflow-x: clip;
+  overflow-wrap: break-word; /* a long word or path wraps instead of widening its grid track */
+}
+/* A grid item defaults to min-width: auto, so one nowrap run (a code line, a truncated label) or a long unbroken string stretches its track past the block
+   at narrow widths. Zero specificity: any min-w utility on the item still wins. */
+.kh-block :where(.grid) > :where(*) { min-width: 0; }
+/* A bare section (hero-prompt bare): the page's background shows behind it, and a focus glow or shadow is not clipped. */
+.kh-block:has(> [data-kh-bare]) { background: transparent; overflow: visible; }
+/* Two bands of the same tone in a row: the first band's bottom padding is already the gap, so the second does not add its top padding again
+   (two full section paddings read as ~240px of dead air). Only after a section band, never after a navbar or banner, and both for blocks that
+   sit side by side and for blocks each wrapped in a div (the directory and the Canvas export). Not after a band that ends flush (a hero whose
+   picture sits on its bottom edge, Section flushEnd): it has no bottom padding, so the next band keeps its top padding. A section that paints its own
+   band inside the block (data-kh-own-band: stats-band's accent fill) keeps its padding and leaves its neighbours theirs: its padding is inside its colour. */
+[data-kh-tone='accent'] > [data-kh-own-band] { --kh-accent-fill: var(--kh-canvas); --kh-accent-fg: var(--kh-ink); } /* already on the accent: the band is the tone's own */
+.kh-block[data-kh-tone='default']:has(> section:not([data-kh-flush-end], [data-kh-own-band])) + .kh-block[data-kh-tone='default'] > section:not([data-kh-own-band]),
+div:has(> .kh-block[data-kh-tone='default'] > section:not([data-kh-flush-end], [data-kh-own-band])) + div:has(> .kh-block[data-kh-tone='default']) > .kh-block > section:not([data-kh-own-band]) { padding-top: 0; }
+.kh-block[data-kh-tone='muted']:has(> section:not([data-kh-flush-end], [data-kh-own-band])) + .kh-block[data-kh-tone='muted'] > section:not([data-kh-own-band]),
+div:has(> .kh-block[data-kh-tone='muted'] > section:not([data-kh-flush-end], [data-kh-own-band])) + div:has(> .kh-block[data-kh-tone='muted']) > .kh-block > section:not([data-kh-own-band]) { padding-top: 0; }
+.kh-block[data-kh-tone='inverse']:has(> section:not([data-kh-flush-end], [data-kh-own-band])) + .kh-block[data-kh-tone='inverse'] > section:not([data-kh-own-band]),
+div:has(> .kh-block[data-kh-tone='inverse'] > section:not([data-kh-flush-end], [data-kh-own-band])) + div:has(> .kh-block[data-kh-tone='inverse']) > .kh-block > section:not([data-kh-own-band]) { padding-top: 0; }
+.kh-block[data-kh-tone='accent']:has(> section:not([data-kh-flush-end], [data-kh-own-band])) + .kh-block[data-kh-tone='accent'] > section:not([data-kh-own-band]),
+div:has(> .kh-block[data-kh-tone='accent'] > section:not([data-kh-flush-end], [data-kh-own-band])) + div:has(> .kh-block[data-kh-tone='accent']) > .kh-block > section:not([data-kh-own-band]) { padding-top: 0; }
+.kh-block :where(h1, h2, h3, h4) { font-family: var(--kh-font-display); text-wrap-style: balance; }
+/* A Style's heading case reaches app screens too, not only blocks (chatadmin 10:59). Zero specificity and 'none' unless the Style
+   sets it, so no app's headings change by default; the font stays block-only so apps keep choosing their own. */
+:where(.kh-root, [data-kh-theme]) :where(h1, h2, h3, h4) { text-transform: var(--kh-heading-case, none); }
+.kh-block :where(p) { text-wrap-style: pretty; }
+.kh-block ::selection { background: color-mix(in oklab, var(--kh-accent) 28%, transparent); }
+
+/* ---------- Media: image, or a themed placeholder ---------- */
+/* In @layer components so utility classes passed to <Media className> (rounded-*, border-*) win. */
+@layer components {
+  .kh-media {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background: var(--kh-surface-2);
+    border-radius: inherit;
+  }
+  /* aspect ratios by attribute, so SSR output carries no inline style (CSP style-src 'self'); 16/10 is the fallback */
+  .kh-media { aspect-ratio: 16 / 10; }
+  .kh-media[data-kh-ratio='16/9'] { aspect-ratio: 16 / 9; }
+  .kh-media[data-kh-ratio='16/8'] { aspect-ratio: 16 / 8; }
+  .kh-media[data-kh-ratio='16/7'] { aspect-ratio: 16 / 7; }
+  .kh-media[data-kh-ratio='16/6'] { aspect-ratio: 16 / 6; }
+  .kh-media[data-kh-ratio='16/10'] { aspect-ratio: 16 / 10; }
+  .kh-media[data-kh-ratio='21/9'] { aspect-ratio: 21 / 9; }
+  .kh-media[data-kh-ratio='4/5'] { aspect-ratio: 4 / 5; }
+  .kh-media[data-kh-ratio='5/4'] { aspect-ratio: 5 / 4; }
+  .kh-media[data-kh-ratio='4/3'] { aspect-ratio: 4 / 3; }
+  .kh-media[data-kh-ratio='3/4'] { aspect-ratio: 3 / 4; }
+  .kh-media[data-kh-ratio='9/16'] { aspect-ratio: 9 / 16; }
+  .kh-media[data-kh-ratio='3/1'] { aspect-ratio: 3 / 1; }
+  .kh-media[data-kh-ratio='1/1'] { aspect-ratio: 1 / 1; }
+  /* ratio 'auto': the box takes the picture's own shape and nothing is cropped (a figure in a report) */
+  .kh-media[data-kh-ratio='auto'] { aspect-ratio: auto; }
+  .kh-media[data-kh-ratio='auto'] > img { position: static; height: auto; object-fit: contain; }
+  .kh-media[data-kh-ratio='auto'][data-kh-media='placeholder'] { aspect-ratio: 16 / 10; }
+  .kh-media > picture { display: contents; }
+  .kh-media > img, .kh-media > picture > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  /* A picture with a dark twin (Media srcDark): the theme's mode attribute shows one and hides the other. */
+  .kh-media > img[data-kh-dark], .kh-media > picture[data-kh-dark] { display: none; }
+  [data-kh-mode='dark'] .kh-media[data-kh-media-dark] > img[data-kh-light], [data-kh-mode='dark'] .kh-media[data-kh-media-dark] > picture[data-kh-light] { display: none; }
+  [data-kh-mode='dark'] .kh-media[data-kh-media-dark] > img[data-kh-dark] { display: block; }
+  [data-kh-mode='dark'] .kh-media[data-kh-media-dark] > picture[data-kh-dark] { display: contents; }
+  .kh-media[data-kh-media='placeholder'] {
+    background:
+      radial-gradient(120% 90% at 0% 0%, color-mix(in oklab, var(--kh-accent) 17%, transparent), transparent 62%),
+      radial-gradient(90% 80% at 100% 100%, color-mix(in oklab, var(--kh-accent) 9%, transparent), transparent 58%),
+      var(--kh-surface-2);
+  }
+  .kh-media[data-kh-media='placeholder']::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--kh-ink) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--kh-ink) 5%, transparent) 1px, transparent 1px);
+    background-size: 2.5rem 2.5rem;
+    mask-image: radial-gradient(80% 80% at 50% 50%, #000 30%, transparent 100%);
+  }
+
+  /* ---------- Wireframe: the same layout, honestly grey ---------- */
+  [data-kh-theme='wireframe'] .kh-media,
+  [data-kh-theme='wireframe'] .kh-media[data-kh-media] {
+    background:
+      linear-gradient(to top right, transparent calc(50% - 0.5px), var(--kh-line-strong) calc(50% - 0.5px), var(--kh-line-strong) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+      linear-gradient(to bottom right, transparent calc(50% - 0.5px), var(--kh-line-strong) calc(50% - 0.5px), var(--kh-line-strong) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+      var(--kh-surface-3);
+    border: 1px solid var(--kh-line-strong);
+  }
+  [data-kh-theme='wireframe'] .kh-media > img,
+  [data-kh-theme='wireframe'] .kh-media::after { display: none; }
+}
+
+[data-kh-theme='wireframe'] *,
+[data-kh-theme='wireframe'] *::before,
+[data-kh-theme='wireframe'] *::after {
+  box-shadow: none !important;
+  transition: none !important;
+  animation: none !important;
+  text-shadow: none !important;
+}
+[data-kh-theme='wireframe'] .kh-block *:not(.kh-media) { background-image: none !important; }
+[data-kh-theme='wireframe'] .kh-block :where(h1, h2, h3, h4) { font-weight: 600; }
+
+@media (prefers-reduced-motion: reduce) {
+  .kh-root *, .kh-root *::before, .kh-root *::after { transition-duration: 0s !important; animation: none !important; }
+}
+
+/* Where text wraps (Felix's red flags, 2026-10-10): headings balance their lines and paragraphs avoid a one-word last line.
+   Zero specificity and scoped to the library, so a block or a host app can still override it. The longhand text-wrap-style: the
+   text-wrap shorthand also set the wrap mode, so a heading with Tailwind's truncate wrapped again (Klar Portal 10-23). */
+:where(.kh-root, [data-kh-theme]) :where(h1, h2, h3, h4) { text-wrap-style: balance; }
+:where(.kh-root, [data-kh-theme]) :where(p, li, blockquote) { text-wrap-style: pretty; }
+
+/* Google's mark on "Continue with Google" (app-auth-signin): its brand colours, the same in both modes, as Google asks. */
+.kh-google-g path:nth-child(1) { fill: #ea4335; }
+.kh-google-g path:nth-child(2) { fill: #4285f4; }
+.kh-google-g path:nth-child(3) { fill: #fbbc05; }
+.kh-google-g path:nth-child(4) { fill: #34a853; }
+/* Microsoft's mark on "Continue with Microsoft" (app-auth-signin): its four colours, the same in both modes, as Microsoft asks. */
+.kh-microsoft-mark rect:nth-child(1) { fill: #f25022; }
+.kh-microsoft-mark rect:nth-child(2) { fill: #7fba00; }
+.kh-microsoft-mark rect:nth-child(3) { fill: #00a4ef; }
+.kh-microsoft-mark rect:nth-child(4) { fill: #ffb900; }
+
+/* KlarhimmelMark: the brand navy on light, the ink on dark (the navy would vanish on the dark canvas). */
+.kh-klarhimmel-mark { color: #0b1a2c; }
+[data-kh-mode='dark'] .kh-klarhimmel-mark { color: var(--kh-ink); }
+
+/* IconCircle tone="brand": Klarhimmel's blue (klarhimmelStyle accent) under any theme, so an organisation's dark accent cannot grey it. */
+.kh-icon-circle { background: #1c6ee0; color: #ffffff; }
+[data-kh-mode='dark'] .kh-icon-circle { background: #5b9bf5; color: #0b1a2c; }

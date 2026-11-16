@@ -1,0 +1,2 @@
+/* One family, on demand: import this instead of fonts.css to ship only geist-mono. */
+@import '@fontsource-variable/geist-mono/index.css';

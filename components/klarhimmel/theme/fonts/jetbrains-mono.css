@@ -1,0 +1,2 @@
+/* One family, on demand: import this instead of fonts.css to ship only jetbrains-mono. */
+@import '@fontsource-variable/jetbrains-mono/index.css';

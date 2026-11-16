@@ -1,0 +1,2 @@
+/* One family, on demand: import this instead of fonts.css to ship only instrument-serif. */
+@import '@fontsource/instrument-serif/index.css';
