@@ -17,6 +17,7 @@ Puis ouvrir http://localhost:3000.
 
 | Quoi | Où |
 | --- | --- |
+| Nom, sous-titre, e-mail, LinkedIn, pages du menu | `lib/site.ts` |
 | Couleurs, polices, arrondis du site | `lib/theme.ts` |
 | Enveloppe commune (thème, menu, pied de page) | `components/site/site-shell.tsx` |
 | Contenu de la page d'accueil | `components/site/home.tsx` |
@@ -26,14 +27,14 @@ Puis ouvrir http://localhost:3000.
 ## Ajouter un bloc Klarhimmel
 
 ```bash
-npx shadcn@latest add @klarhimmel/<nom-du-bloc>
+npm run add-block -- <nom-du-bloc>
 ```
 
 Les noms des blocs sont listés dans `.claude/skills/klarhimmel-design/SKILL.md`.
 
-Modification locale de Klarhimmel : la police des titres, Bricolage Grotesque, a été ajoutée à la liste des polices
-(`components/klarhimmel/theme/tokens.ts`, `fonts.css` et `fonts/bricolage-grotesque.css`). Si une réinstallation du thème
-écrase ces fichiers, il faut refaire cet ajout.
+Pourquoi ce script plutôt que `npx shadcn add` directement : la police des titres, Bricolage Grotesque, a été ajoutée
+à la liste des polices de Klarhimmel (`components/klarhimmel/theme/tokens.ts`, `fonts.css` et `fonts/bricolage-grotesque.css`).
+Chaque installation réécrit ces fichiers communs ; le script (`scripts/add-block.sh`) installe le bloc puis refait l'ajout.
 
 ## Choix de design validés
 

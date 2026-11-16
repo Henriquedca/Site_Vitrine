@@ -3,11 +3,10 @@
  * Modifier ici change partout.
  */
 export const SITE = {
-  name: 'Henrique da Costa Araujo',
+  name: 'Henrique da Costa Araújo',
   subtitle: 'Comptabilité · Finance · Gestion',
-  // À RENSEIGNER : l'adresse e-mail publique et le lien du profil LinkedIn.
-  email: 'contact@exemple.fr',
-  linkedin: 'https://www.linkedin.com/in/a-renseigner',
+  email: 'henriquedcapro@outlook.com',
+  linkedin: 'https://www.linkedin.com/in/henrique-da-costa-araujo-b9179131b/',
 };
 
 /** Pages principales, dans l'ordre du menu. */
