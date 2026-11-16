@@ -22,7 +22,43 @@ Puis ouvrir http://localhost:3000.
 | Enveloppe commune (thème, menu, pied de page) | `components/site/site-shell.tsx` |
 | Contenu de la page d'accueil | `components/site/home.tsx` |
 | Blocs Klarhimmel installés (ne pas modifier à la main sauf besoin) | `components/klarhimmel/` |
+| Articles (un fichier Markdown par article) | `content/articles/` |
 | Images | `public/images/` |
+
+## Écrire un article
+
+Un fichier Markdown par article dans `content/articles/`. Le nom du fichier devient l'adresse
+(`content/articles/mon-article.md` → `/articles/mon-article`).
+
+```markdown
+---
+titre: "Titre de l'article"
+chapeau: "Une ou deux phrases de présentation (carte et début de l'article)."
+categorie: Fiscalité
+date: "2026-11-01"
+image: /images/articles/mon-image.svg
+imageSombre: /images/articles/mon-image-sombre.svg   # facultatif : version pour le mode sombre
+imageAlt: "Description de l'image"
+lecture: 6                # facultatif : calculé sinon
+brouillon: true           # retirer (ou mettre false) pour publier
+---
+
+Introduction…
+
+## Première partie
+
+Texte, listes à puces, **gras**, liens et tableaux :
+
+| Critère | Option A | Option B |
+| --- | --- | --- |
+| … | … | … |
+```
+
+- Les **brouillons** sont visibles en développement (`npm run dev`) et masqués sur le site en ligne. Pour les voir sur une
+  version de production (par exemple un aperçu Vercel), définir la variable d'environnement `SHOW_DRAFTS=true`.
+- L'accueil montre les trois derniers articles visibles. S'il n'y en a aucun, la section est masquée.
+- La mention « Bon à savoir : information générale » est ajoutée automatiquement à la fin de chaque article.
+- Les espaces insécables avant « : ; ? ! » sont ajoutées automatiquement.
 
 ## Ajouter un bloc Klarhimmel
 
