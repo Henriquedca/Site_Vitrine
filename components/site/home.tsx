@@ -6,7 +6,7 @@ import { SiteShell } from './site-shell';
 
 export function Home() {
   return (
-    <SiteShell>
+    <SiteShell current="/">
       <BlockSurface type="hero-split">
         <HeroSplit
           props={{
