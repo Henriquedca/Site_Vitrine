@@ -4,6 +4,7 @@ import { BlockSurface } from '@/components/klarhimmel/blocks/surface';
 import FeaturesGrid from '@/components/klarhimmel/blocks/features-grid';
 import CtaBand from '@/components/klarhimmel/blocks/cta-band';
 import { CONTACT_PAGE } from '@/lib/site';
+import { HERO_STATS, SPECIALITES } from '@/lib/profil';
 import type { Entry } from '@/lib/collections';
 import { ContentCarousel } from './content-carousel';
 import { HeroVideo } from './hero-video';
@@ -17,11 +18,13 @@ export function Home({ articles, creations }: { articles: Entry[]; creations: En
         <HeroVideo
           props={{
             eyebrow: '',
+            chips: SPECIALITES,
             title: 'Vos chiffres, clairs et utiles pour décider.',
             description:
-              'Comptabilité, fiscalité et pilotage financier : je partage ici mes analyses, ma veille et mes outils, pour aider les dirigeants à faire de leurs chiffres un outil de décision.',
+              'Je partage ici mes analyses, ma veille et mes outils, pour aider les dirigeants à faire de leurs chiffres un outil de décision.',
             primary: { label: 'Me contacter', href: '/contact' },
             secondary: { label: 'Lire les articles', href: '/articles' },
+            stats: HERO_STATS,
             video: {
               webm: '/videos/accueil-graphique.webm',
               mp4: '/videos/accueil-graphique.mp4',

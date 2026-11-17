@@ -29,6 +29,12 @@ export const STATS = [
   { value: 'DSCG', label: 'en deuxième année' },
 ];
 
+/** Les 3 chiffres affichés sous les boutons de l'accueil (repris de STATS pour rester cohérents). */
+export const HERO_STATS = [STATS[0], STATS[1], { value: 'DSCG', label: 'en 2e année' }];
+
+/** Spécialités, en pastilles au-dessus du titre de l'accueil. */
+export const SPECIALITES = ['Comptabilité', 'Fiscalité', 'Pilotage financier'];
+
 /** Formation, dans l'ordre. `etape` s'affiche en grand à gauche (12 caractères au plus). */
 export const FORMATION = [
   { etape: 'BTS CG', titre: 'BTS Comptabilité et gestion', description: '' },

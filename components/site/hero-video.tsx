@@ -3,15 +3,20 @@
 import { useEffect, useId, useRef } from 'react';
 import { Text } from '@/components/klarhimmel/editing';
 import { ActionLink, Container, Eyebrow, Section } from '@/components/klarhimmel/blocks/_shared/kit';
+import { Badge } from '@/components/klarhimmel/ui/badge';
 
 type Link = { label: string; href: string };
 
 export type HeroVideoProps = {
   eyebrow: string;
+  /** Pastilles au-dessus du titre (les spécialités). Vide : rien n'est affiché. */
+  chips?: string[];
   title: string;
   description: string;
   primary: Link;
   secondary: Link;
+  /** Chiffres clés sous les boutons (3 de préférence). Vide : rien n'est affiché. */
+  stats?: { value: string; label: string }[];
   video: {
     /** La même vidéo, sans son, en deux formats : WebM (plus léger) et MP4 (pour les navigateurs qui ne lisent pas le WebM). */
     webm: string;
@@ -34,6 +39,18 @@ export function HeroVideo({ props }: { props: HeroVideoProps }) {
       <Container className="grid grid-cols-1 items-center gap-12 @4xl:grid-cols-[1.05fr_1fr] @4xl:gap-16">
         <div>
           <Eyebrow path={['eyebrow']} value={props.eyebrow} />
+          {props.chips && props.chips.length > 0 && (
+            <ul className="mb-6 flex flex-wrap gap-2" aria-label="Spécialités">
+              {props.chips.map((chip) => (
+                <li key={chip}>
+                  <Badge tone="accent" className="px-3 py-1 text-kh-small">
+                    <span aria-hidden className="size-1.5 rounded-full bg-current" />
+                    {chip}
+                  </Badge>
+                </li>
+              ))}
+            </ul>
+          )}
           <div id={id}>
             <Text path={['title']} value={props.title} as="h1" className="text-kh-title font-semibold" />
           </div>
@@ -42,6 +59,19 @@ export function HeroVideo({ props }: { props: HeroVideoProps }) {
             <ActionLink path={['primary']} value={props.primary} />
             <ActionLink path={['secondary']} value={props.secondary} variant="secondary" />
           </div>
+          {props.stats && props.stats.length > 0 && (
+            <dl className="mt-10 grid max-w-kh-lead grid-cols-3 border-t border-kh-line pt-6 @3xl:mt-12">
+              {props.stats.map((stat, i) => (
+                <div key={stat.label} className={i > 0 ? 'border-l border-kh-line pl-4 @md:pl-6' : 'pr-4 @md:pr-6'}>
+                  <dt className="sr-only">{stat.label}</dt>
+                  <dd className="m-0">
+                    <span className="block font-kh-display text-[1.5rem] font-semibold leading-tight text-kh-ink @md:text-[1.875rem]">{stat.value}</span>
+                    <span aria-hidden className="mt-1 block text-kh-caption text-kh-muted @md:text-kh-small">{stat.label}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          )}
         </div>
         <LoopVideo {...props.video} />
       </Container>
