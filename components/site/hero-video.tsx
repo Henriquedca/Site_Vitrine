@@ -40,11 +40,11 @@ export function HeroVideo({ props }: { props: HeroVideoProps }) {
         <div>
           <Eyebrow path={['eyebrow']} value={props.eyebrow} />
           {props.chips && props.chips.length > 0 && (
-            <ul className="mb-6 flex flex-wrap gap-2" aria-label="Spécialités">
+            <ul className="mb-7 flex flex-wrap gap-2.5" aria-label="Spécialités">
               {props.chips.map((chip) => (
                 <li key={chip}>
-                  <Badge tone="accent" className="px-3 py-1 text-kh-small">
-                    <span aria-hidden className="size-1.5 rounded-full bg-current" />
+                  <Badge tone="accent" className="px-3.5 py-1.5 text-kh-small @5xl:px-4 @5xl:py-2 @5xl:text-kh-body">
+                    <span aria-hidden className="size-2 rounded-full bg-current" />
                     {chip}
                   </Badge>
                 </li>
@@ -52,21 +52,21 @@ export function HeroVideo({ props }: { props: HeroVideoProps }) {
             </ul>
           )}
           <div id={id}>
-            <Text path={['title']} value={props.title} as="h1" className="text-kh-title font-semibold" />
+            <Text path={['title']} value={props.title} as="h1" className="text-[clamp(2.25rem,1.2rem+3.2cqi,4.75rem)] font-semibold leading-[1.04] tracking-[-0.025em]" />
           </div>
-          <Text path={['description']} value={props.description} as="p" multiline className="mt-6 max-w-kh-lead text-kh-lead text-kh-muted" />
-          <div className="mt-8 flex flex-wrap gap-3">
-            <ActionLink path={['primary']} value={props.primary} />
-            <ActionLink path={['secondary']} value={props.secondary} variant="secondary" />
+          <Text path={['description']} value={props.description} as="p" multiline className="mt-7 max-w-[40rem] text-[clamp(1.125rem,0.95rem+0.45cqi,1.375rem)] leading-relaxed text-kh-muted" />
+          <div className="mt-9 flex flex-wrap gap-3">
+            <ActionLink path={['primary']} value={props.primary} className="@5xl:min-h-14 @5xl:px-8 @5xl:text-kh-lead" />
+            <ActionLink path={['secondary']} value={props.secondary} variant="secondary" className="@5xl:min-h-14 @5xl:px-8 @5xl:text-kh-lead" />
           </div>
           {props.stats && props.stats.length > 0 && (
-            <dl className="mt-10 grid max-w-kh-lead grid-cols-3 border-t border-kh-line pt-6 @3xl:mt-12">
+            <dl className="mt-10 grid grid-cols-3 border-t border-kh-line pt-6 @3xl:mt-14 @3xl:pt-8">
               {props.stats.map((stat, i) => (
                 <div key={stat.label} className={i > 0 ? 'border-l border-kh-line pl-4 @md:pl-6' : 'pr-4 @md:pr-6'}>
                   <dt className="sr-only">{stat.label}</dt>
                   <dd className="m-0">
-                    <span className="block font-kh-display text-[1.5rem] font-semibold leading-tight text-kh-ink @md:text-[1.875rem]">{stat.value}</span>
-                    <span aria-hidden className="mt-1 block text-kh-caption text-kh-muted @md:text-kh-small">{stat.label}</span>
+                    <span className="block font-kh-display text-[clamp(1.5rem,0.9rem+1.6cqi,2.75rem)] font-semibold leading-tight text-kh-ink">{stat.value}</span>
+                    <span aria-hidden className="mt-1 block text-kh-caption text-kh-muted @md:text-kh-small @5xl:text-kh-body">{stat.label}</span>
                   </dd>
                 </div>
               ))}
