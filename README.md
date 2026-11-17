@@ -32,6 +32,7 @@ Puis ouvrir http://localhost:3000.
 | Page Contact | `components/site/contact.tsx` |
 | Mentions légales et Confidentialité | `components/site/legal.tsx` |
 | Vidéo de l'accroche (accueil) | `components/site/hero-video.tsx`, fichiers dans `public/videos/` |
+| Logo (sources, PNG) et icônes d'onglet | `design/logo/`, `app/favicon.ico`, `app/icon.svg`, `app/apple-icon.png` |
 | Images | `public/images/` |
 
 ## Écrire un article, une note de veille ou présenter un outil
