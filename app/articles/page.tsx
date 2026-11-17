@@ -3,7 +3,7 @@ import { ArticlesIndex } from '@/components/site/articles-index';
 import { getEntries } from '@/lib/content';
 
 export const metadata: Metadata = {
-  title: 'Articles · Henrique da Costa Araújo',
+  title: 'Articles',
   description: 'Des analyses de fond pour comprendre ses chiffres et décider : pilotage, rémunération, fiscalité.',
 };
 

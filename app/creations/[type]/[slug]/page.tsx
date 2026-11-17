@@ -23,7 +23,7 @@ async function load(params: PageProps<'/creations/[type]/[slug]'>['params']) {
 export async function generateMetadata({ params }: PageProps<'/creations/[type]/[slug]'>): Promise<Metadata> {
   const entry = await load(params);
   if (!entry) return {};
-  return { title: `${entry.titre} · Henrique da Costa Araújo`, description: entry.chapeau };
+  return { title: entry.titre, description: entry.chapeau };
 }
 
 export default async function Page({ params }: PageProps<'/creations/[type]/[slug]'>) {

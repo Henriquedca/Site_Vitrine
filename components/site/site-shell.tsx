@@ -14,7 +14,10 @@ export function SiteShell({ current, children }: { current?: string; children: R
   return (
     <Theme theme="brand" style={SITE_STYLE} mode="system" className="min-h-dvh bg-kh-canvas text-kh-ink">
       <BlockSurface type="navbar-simple">
-        <SiteNavbar props={{ brand: SITE.name, links: PAGES, current, cta: CONTACT_PAGE }} extra={<LinkedInLink />} />
+        <SiteNavbar
+          props={{ brand: SITE.name, logo: { src: '/images/logo-ha.svg', alt: '' }, links: PAGES, current, cta: CONTACT_PAGE }}
+          extra={<LinkedInLink />}
+        />
       </BlockSurface>
       <main>{children}</main>
       <BlockSurface type="footer">

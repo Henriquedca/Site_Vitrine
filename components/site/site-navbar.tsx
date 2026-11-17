@@ -1,6 +1,7 @@
 /**
  * Menu du site : copie du bloc Klarhimmel « navbar-simple » (même rendu, même comportement sur mobile), avec un seul ajout,
- * `extra`, affiché à côté du bouton principal (ici l'icône LinkedIn). Ce fichier appartient au site : une réinstallation
+ * `extra`, affiché à côté du bouton principal (ici l'icône LinkedIn), et un nom un peu plus petit sur téléphone
+ * (pour qu'il tienne sur une ligne avec le logo). Ce fichier appartient au site : une réinstallation
  * de Klarhimmel ne l'écrase pas. Pour reprendre une évolution du bloc d'origine, comparer avec
  * components/klarhimmel/blocks/navbar-simple/component.tsx.
  */
@@ -191,7 +192,7 @@ function NavbarSimple({ props, extra }: BlockProps<Props> & { extra?: ReactNode 
       {/* One row at any width (portal c-20261016-1348: a long business name pushed the menu onto its own row at 390): the brand
           shrinks and its name breaks onto at most two lines; the editor still wraps, for its full-width menu row. */}
       <Container className={cn('kh-navbar-container flex min-h-16 items-center gap-2 py-2', editing ? 'flex-wrap' : 'flex-nowrap', w.row)}>
-        <Named as="a" href={safeHref(props.brandHref ?? '/')} className={cn('inline-flex min-w-0 items-center gap-(--kh-mark-gap) rounded-kh-sm text-kh-heading font-semibold tracking-tight text-kh-ink', FOCUS, w.brand)}>
+        <Named as="a" href={safeHref(props.brandHref ?? '/')} className={cn('inline-flex min-w-0 items-center gap-(--kh-mark-gap) rounded-kh-sm text-[1.0625rem] @md:text-kh-heading font-semibold tracking-tight text-kh-ink', FOCUS, w.brand)}>
           {!props.wordmark?.src && <Mark mark={props.mark} />}
           {!props.wordmark?.src && <BrandMark path={['logo']} logo={props.logo} />}
           {brandName({ brand: props.brand, wordmark: props.wordmark, className: 'line-clamp-2 min-w-0 leading-tight hyphens-auto [overflow-wrap:anywhere]' })}

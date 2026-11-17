@@ -3,7 +3,7 @@ import { CreationsIndex } from '@/components/site/creations-index';
 import { getEntries } from '@/lib/content';
 
 export const metadata: Metadata = {
-  title: 'Créations · Henrique da Costa Araújo',
+  title: 'Créations',
   description: 'Des outils de gestion présentés en détail et une veille courte sur ce qui change pour les entreprises.',
 };
 

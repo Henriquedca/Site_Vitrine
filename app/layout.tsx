@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Henrique · Comptabilité, finance et gestion',
+  // Onglet : « Accueil - Henrique da Costa Araújo » sur l'accueil, « <Page> - Henrique da Costa Araújo » ailleurs.
+  title: { default: `Accueil - ${SITE.name}`, template: `%s - ${SITE.name}` },
   description:
-    'Comptabilité, pilotage financier et contrôle de gestion : un accompagnement complet pour les dirigeants, des articles et des outils.',
+    'Comptabilité, fiscalité et pilotage financier : des analyses, une veille et des outils pour aider les dirigeants à décider avec leurs chiffres.',
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
